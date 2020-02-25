@@ -1,0 +1,49 @@
+<html>
+	<body>
+		<div id="background" style="background-color: sienna;height:580px;width:550px;">
+			<!-- Character -->
+			<div id="ninja" style="background-image:url(img/down1.png);
+			position: absolute;top: 25px;left:250px;height:86px;width:58px;">
+			</div>
+		</div>
+
+		<!-- Javascript -->
+		<script type="text/javascript">
+			var leftValue = 250, topValue = 25, direction = 'down', walk = 1;
+
+			function update(){
+				if(walk == 1){
+					walk = 2;
+				}
+				else {
+					walk = 1;
+				}
+				document.getElementById("ninja").style.left = leftValue + "px";
+				document.getElementById("ninja").style.top = topValue + "px";
+				document.getElementById("ninja").style.backgroundImage = "url('img/" + direction + walk + ".png')";
+			}
+			
+			//function recieves key-input
+			document.onkeydown = function(keydown) {
+				console.log(keydown);
+				if(keydown.keyCode == 37 && leftValue > 10){ // LEFT
+					leftValue = leftValue - 10;
+					direction = 'left';
+				}
+				else if (keydown.keyCode == 39 && leftValue < 500){ // RIGHT
+					leftValue = leftValue + 10;
+					direction = 'right';
+				}
+				else if (keydown.keyCode == 38 && topValue > 0){ // UP
+					topValue = topValue - 10;
+					direction = 'top';
+				}
+				else if (keydown.keyCode == 40 && topValue < 500){ // DOWN
+					topValue = topValue + 10;
+					direction = 'down';
+				}
+				update();
+			}
+		</script>
+	</body>
+</html>

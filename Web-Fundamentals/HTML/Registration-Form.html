@@ -1,0 +1,66 @@
+<html>
+    <head></head>
+    <body>
+        <h1>My Registration Form</h1>
+        <!-- Basic form example: creating a form using the different input fields:
+            * text
+            * password
+            * textarea
+            * radio
+            * select -->
+        <!-- Form doesn't have any action -->
+        <form action="">
+            <label for="firstName">First Name:</label>
+            <br>
+            <input type="text" id="firstName">
+            <br>
+
+            <label for="lastName">Last Name:</label>
+            <br>
+            <input type="text" id="lastName">
+            <br>
+
+            <label for="email">E-Mail:</label>
+            <br>
+            <input type="text" id="email">
+            <br>
+
+            <label for="password">Password</label>
+            <br>
+            <input type="password" id="password">
+            <br>
+
+            <label for="confirm-password">Confirm Password</label>
+            <br>
+            <input type="password" id="confirm-password">
+            <br>
+
+            <label for="birthday">Birthday</label>
+            <br>
+            <input type="date" id="birthday">
+            <br>
+
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender">
+            <label for="decline">Female</label>
+            <input type="radio" id="female" name="gender">
+            <label for="decline">Prefer not to say</label>
+            <input type="radio" id="decline" name="gender">
+            <br>
+
+            <p>A short descirption about yourself:</p>
+            <textarea name="description" id="description" cols="50" rows="10"></textarea>
+            <br>
+
+            <label for="fav-lang">Favorite Language:</label>
+            <select name="" id="fav-lang">
+                <option value="">Javascript</option>
+                <option value="">Python</option>
+                <option value="">C#</option>
+            </select>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

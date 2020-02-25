@@ -1,0 +1,32 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+/* Layout */
+#world {
+    background-image: url(../img/city-night.jpg);
+    height: 750px;
+    width: 1076px;
+}
+/* Components */
+.airplane {
+    background-image: url(../img/hero-plane.png);
+    position: absolute;
+    height: 64px;
+    width: 64px;
+}
+.enemy {
+    background-image: url(../img/enemy-airplane.png);
+    transform: rotate(180deg);
+    position: absolute;
+    height: 75px;
+    width: 70px;
+}
+.missile {
+    background-image: url(../img/missile.png);
+    transform: rotate(180deg);
+    position: absolute;
+    height: 24px;
+    width: 24px;
+}
