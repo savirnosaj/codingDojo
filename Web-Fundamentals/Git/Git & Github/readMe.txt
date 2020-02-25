@@ -27,3 +27,24 @@
 	git clone ___ - clones a remote repository in ___ to your own local folder.
 
 	CREATING REPOSITORY(VIA TERMINAL)
+	* To create a repository, all we need to do is type:
+
+	git init
+
+	* Now create a file in that directory called aboutMe.txt with your name, a project goal you wish to accomplish, and your favorite TV show. Ours looked like this: 
+
+	Name: Kari Ekenes
+	Project Goal: Master Git!
+	Favorite TV Show: Game of Thrones
+
+	The current state of aboutMe.txt is modified. You can see the current state by running:
+	git status
+
+	* To change the state to staged (which means ready to be committed), we tell Git to add the file to its index.
+	git add aboutMe.txt
+
+	Now to take a snapshot of the current state of all the staged files, we run:
+	git commit -m "aboutMe.txt added"
+
+	Now to see the list of your commits, you can run the command
+	git log
