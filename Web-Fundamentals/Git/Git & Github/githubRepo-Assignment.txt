@@ -1,0 +1,14 @@
+$ cd Desktop/
+$ cd DojoAssignments/
+$ git init
+$ git status
+$ git add .
+$ git commit -m "Initial Commit"
+$ git status
+$ git remote add origin https://github.com/savirnosaj/DojoAssignments.git
+$ git push -u origin master
+$ touch readme.md
+$ git status
+$ git add readme.md
+$ git commit -m "Added a readme file explaining the purpose of the repo"
+$ git push
