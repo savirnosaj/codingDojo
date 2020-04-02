@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+a:link {
+    color: #000;
+}
+/*  */
+#wrapper {
+    background: #f7f7f7;
+    width: 950px;
+}
+#header {
+    padding: 13px;
+}
+#header h1 {
+    display: inline-block;
+    margin-right: 345px;
+}
+#header p {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+}
+#main-content {
+    background: -webkit-radial-gradient(#6f5964, #1f0f13); /* Safari 5.1- 6.0 */
+    background: -o-radial-gradient(#6f5964, #1f0f13); /* Opera 11.6-12.0 */
+    background: -moz-radial-gradient(#6f5964, #1f0f13); /* Firefox 3.6-15 */
+    background: radial-gradient(#6f5964, #1f0f13); /* Standard syntax */
+    padding: 25px;
+}
+#main-content #portfolio-img {
+    border: 5px solid #c0c0c0;
+    display: inline-block;
+}
+#main-content .container {
+    background: -webkit-linear-gradient(to bottom right, #fefefe, #dbcbda); /* Safari 5.1- 6.0 */
+    background: -o-linear-gradient(to bottom right, #fefefe, #dbcbda); /* Opera 11.6-12.0 */
+    background: -moz-linear-gradient(to bottom right, #fefefe, #dbcbda); /* Firefox 3.6-15 */
+    background: linear-gradient(to bottom right, #fefefe, #dbcbda); /* Standard syntax */
+    display: inline-block;
+}
+.double-grid {
+    height: 267px;
+    width: 475px;
+    vertical-align: top;
+    margin-left: 20px;
+}
+.triple-grid {
+    width: 283px;
+    vertical-align: top;
+    margin-top: 25px;
+}
+.triple-grid:not(:last-child) {
+    margin-right: 20px;
+}
+#main-content .container .container__title {
+    background: -webkit-linear-gradient(#bdbdbf, #888694, #bdbdbf); /* Safari 5.1- 6.0 */
+    background: -o-linear-gradient(#bdbdbf, #888694, #bdbdbf); /* Opera 11.6-12.0 */
+    background: -moz-linear-gradient(#bdbdbf, #888694, #bdbdbf); /* Firefox 3.6-15 */
+    background: linear-gradient(#bdbdbf, #888694, #bdbdbf); /* Standard syntax */
+    height: 45px;
+    width: 100%;
+}
+#main-content .container .container__title .title-style {
+    color: #fff;
+    position: absolute;
+    margin: 10px 0 0 10px;
+}
+#main-content .container .container__info {
+    padding: 10px;
+}
+#main-content .container .container-height {
+    height: 195px;
+}
+#main-content .container .technologies {
+    padding: 15px;
+}
+#main-content .container .tech-button {
+    padding: 0 0 15px 0;
+    text-align: center;
+}
+#main-content .container .project-button {
+    background: #407d61;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 8px;
+}
+#main-content .container .project-button a {
+    text-decoration: none;
+    color: #fff;
+}
+.software-logo {
+    display: inline-block;
+    margin-right: 10px;
+}
+/* Footer */
+#footer {
+    font-size: 18px;
+    text-align: center;
+}
+#footer p {
+margin: 10px;
+}
+#footer p a {
+    color: #000;
+}
