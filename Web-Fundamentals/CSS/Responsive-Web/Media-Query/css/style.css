@@ -1,0 +1,24 @@
+button {
+    height: 200px;
+    display: inline-block;
+}
+/* Media Query */
+@media only screen and (max-width: 480px) {
+    button {
+        display: inline-block;
+        background: #ffff00;
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 481px) {
+    button {
+        background:#ff0000;
+        width: 49.5%;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    button {
+        background: #0000ff;
+        width: 24.7%;
+    }
+}

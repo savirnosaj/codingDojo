@@ -1,0 +1,48 @@
+<!-- Assignment: 
+    Duplicate these basic shapes using CSS3 code (try to recreate them without having to use any border generators):
+-->
+<html>
+    <head>
+        <style>
+            #box {
+                width: 140px;
+                height: 140px;
+                background: #0000ff;
+            }
+            #circle {
+                height: 140px;
+                width: 140px;
+                border-radius: 100%;
+                background: #0000ff;
+                margin-top: 10px;
+            }
+            #up-triangle {
+                height: 0;
+                width: 0;
+                border-left: 70px solid transparent;
+                border-right: 70px solid transparent;
+                border-bottom: 140px solid #0000ff;
+                margin-top: 10px;
+            }
+            #pacman {
+                height: 0;
+                width: 0;
+                border-top: 70px solid #0000ff;
+                border-right: 70px solid transparent;
+                border-bottom: 70px solid #0000ff;
+                border-left: 70px solid #0000ff;
+                border-top-left-radius: 70px;
+                border-top-right-radius: 70px;
+                border-bottom-right-radius: 70px;
+                border-bottom-left-radius: 70px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <div id="circle"></div>
+        <div id="up-triangle"></div>
+        <div id="pacman"></div>
+    </body>
+</html>

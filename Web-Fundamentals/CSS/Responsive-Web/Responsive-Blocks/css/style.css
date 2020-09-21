@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+/* Wrapper */
+#wrapper {
+    padding: 1rem;
+}
+/* Header */
+#header {
+    padding: 6rem;
+    background: #008000;
+    margin-bottom: 1em;
+}
+/* Row */
+.row {
+    /* padding: 1rem; */
+}
+/* Container */
+.col {
+    display: inline-block;
+}
+/* Side-Navigation */
+.side-nav {
+    height: 315px;
+    background: #0000ff;
+    margin-right: 1rem;
+}
+/* Main-Content */
+.main-content {
+    vertical-align: top;
+    text-align: center;
+    padding: 1rem;
+    background: #ff0000;
+}
+/* Box */
+.box {
+    background: #ffff00;
+    height: 210px;
+}
+.box:not(:first-child) {
+    margin-left: 1rem;
+}
+/* Rectangle */
+.rectangle {
+    background: #800080;
+    height: 125px;
+    margin: 1.5rem 0 3rem 0;
+}
+/* Media Query */
+@media only screen and (max-width: 480px) {
+    .sm-0 {
+        display: none;
+    }
+    .sm-1 {
+        width: 95%;
+    }
+    .box:not(:first-child) {
+        margin-left: 0;
+    }
+}
+/* Tablet */
+@media only screen and (min-width: 481px) {
+    .md-0 {
+        display: none;
+    }
+    .md-1 {
+        width: 45%;
+    }
+    .md-2 {
+        width: 98%;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .lg-1 {
+        width: 23.25%;
+        display: inline-block;
+    }
+    .lg-2 { /* Three */
+        width: 32%;
+    }
+    .lg-3 { /* Half */
+        width: 49.7%;
+    }
+    .lg-4 { /* Three Forths*/
+        width: 73.25%;
+    }
+    .lg-5 {
+        width: 100%;
+    }
+}

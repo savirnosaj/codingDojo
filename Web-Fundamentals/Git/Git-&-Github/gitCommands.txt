@@ -1,0 +1,42 @@
+
+	GIT COMMANDS -
+
+	git init - initialize the repository.
+	git add . - add all the files that were changed since the last back up to the staging area.
+	git status - shows you all the files that were changed since the last backup and which ones are already added to the staging area.
+	git commit -m "..." - commits the changes to the repository.
+	git checkout ____ - switches to the branch name provided in your git repository. This will create a new branch if the name provided doesn't exist.
+	git branch - shows all of your git branches and marks the one you are currently on.
+	git log - shows all the backups created in the repository.
+	git blame ____ - shows who wrote which line of code or in other words who is to be blamed for that particular line of code.
+	git remote add origin ____ - tells git to add a remote place called 'origin' to a remote URL ___.
+	git push - pushes the changes in your local repository to the remote repository.
+	git pull - pulls the changes in a remote repository to your own local repository.
+	git clone ___ - clones a remote repository in ___ to your own local folder.
+
+	PUSHING TO GITHUB -
+	Lets you put a copy of your repository onto GitHub.
+
+	Once you have pushed your repository to Github... you can access it anywhere, anyone else can also access it.
+	First, you need to create a GitHub repository. When you log in to your GitHub account, located near your username is a button that allows you to create a new repository.
+	Once you've created one, you can push your local repository to GitHub.
+
+	Navigate to your local git repository in your command line. We will add a newly created GitHub repository remotely by running the following:
+
+	(The word remote is just a shorthand for remote repository - i.e. a repository that's not on your local machine.
+	 Origin is the conventional name for the GitHub copy of your repository.)
+
+	git remote add origin https://github.com/<github username>/<github repo name>.git
+	git push origin master
+	git remote add origin https://github.com/purpleshoelace/git-demo.git
+	git push origin master
+	origin refers to the GitHub repository
+
+	master refers to our local repository.
+
+	Other information:
+
+	You can add as many remote repositories as you want by using git remote add <remote name>
+	You can also delete remote repository that you've added by using git remote remove <remote name>
+	To list all the remote repositories you are connected to, run git remote
+	To see more information about a remote repository, use git remote show <remote name>
