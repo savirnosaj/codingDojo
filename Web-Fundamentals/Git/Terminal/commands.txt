@@ -1,9 +1,9 @@
 cd desktop
 md test
 cd test
-copy NUL index.html
-copy NUL styles.css
-copy NUL commands.txt
+copy NUL\nul> index.html
+copy NUL\nul> styles.css
+copy NUL\nul> commands.txt
 copy index.html index_2.html
 del /p styles.css
 Y

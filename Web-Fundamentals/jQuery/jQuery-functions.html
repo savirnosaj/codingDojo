@@ -1,0 +1,409 @@
+<!--
+Assignment: jQuery Functions
+Create a web page that uses the following jQuery functions: Don't randomly start writing jQuery and find elements to attach jQuery code to. Think about what each function could be useful for! This is an assignment that previous students have often reverted back to so as to brush up on their jQuery in later weeks! Use the mockup as motivation, but feel free to embellish!
+
+Do not spend more than 4-8 hours on this assignment.
+
+Important: Sometimes students spend so much time going through the documentation that it prevents them from actually building things. Skim through the documentation quickly and casually play around to get familiar with only the following jQuery methods. Once you have spent 4-5 hours on this assignment, move on as you'll get to learn more about how you can use these jQuery methods to build some amazing things later on.  The wireframe on the right shows only 3 functions being tested.  In this assignment, we want you to add more and test all 17 jQuery functions shown below. 
+
+.click
+.hide
+.show
+.toggle
+.slideDown
+.slideUp
+.slideToggle
+.fadeIn
+.fadeOut
+.addClass
+.before
+.after
+.append
+.html
+.attr
+.val
+.text
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery Functions</title>
+        <!-- CSS -->
+        <style>
+            .highlight {
+                background-color: #ffff00;
+            }
+            .selected {
+                background-color: #0000ff;
+                color: #fff;
+            }
+        </style>
+        <!-- JS jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            "use strict"; // JavaScript is flexable, however our JavaScript should be executed in "strict mode". With strict mode, you can not, for example, use undeclared variables. You can use strict mode in all your programs. It helps to write cleaner code, like preventing you from using undeclared variables.
+            $('document').ready(function(){
+                // CSS
+                $('#wrapper').css('width', '50%');
+                $('.section').css({'text-align': 'center', 'display': 'block'});
+                $('img').css('margin-top', '20px');
+                // Hide & Show
+                $('#showHidebtn').hide();$('#showHideP').hide();
+                $('.ShowImg').hide();$('#hideShowP').hide();$('#hideShowbtn').hide();
+                // Toggle
+                $('.toggleimg').hide();$('.toggletwo').hide();
+                // Slide Up & Down
+                $('#slideUpDownbtn').hide();$('.slideUpDP').hide();
+                $('#slideDownUpbtn').hide();$('.slideDownimg').hide();$('.slideDownUpP').hide();
+                // ToggleSlide
+                $('.toggleUpP').hide();$('.toggleSlideimg').hide();
+                // Fade Out & In
+                $('#fadeOutInbtn').hide();$('.fadeOutInP').hide();$('#fadeInOutbtn').hide();$('.fadeInimg').hide();$('.fadeInOutP').hide();
+
+                // Hide Function
+                $('#hideHidebtn').click(function(){
+                    $('.HideImg').hide('slowly');
+                    $('#hideHideP').hide('slowly');
+                    $('#showHideP').show('slowly');
+                    $('#hideHidebtn').hide();
+                    $('#showHidebtn').show();
+                });
+                $('#showHidebtn').click(function(){
+                    $('.HideImg').show('slowly');
+                    $('#showHideP').hide('slowly');
+                    $('#hideHideP').show('slowly');
+                    $('#showHidebtn').hide();
+                    $('#hideHidebtn').show();
+                });
+                // Show Function
+                $('#showShowbtn').click(function(){
+                    $('.ShowImg').show('slowly');
+                    $('#showShowP').hide();
+                    $('#hideShowP').show();
+                    $('#showShowbtn').hide();
+                    $('#hideShowbtn').show();
+                });
+                $('#hideShowbtn').click(function(){
+                    $('.ShowImg').hide('slowly');
+                    $('#showShowP').show();
+                    $('#hideShowP').hide();
+                    $('#showShowbtn').show();
+                    $('#hideShowbtn').hide();
+                });
+                //Toggle Function
+                $('#toggle').click(function(){
+                    $('.toggleimg').toggle('slowly');
+                    $('.toggleone').toggle();
+                    $('.toggletwo').toggle();
+                });
+                // Slide-Up
+                $('#slideUpbtn').click(function(){
+                    $('.slideUpimg').slideUp('fast');
+                    $('#slideUpbtn').toggle();
+                    $('#slideUpDownbtn').toggle();
+                    $('.slideUpP').toggle();
+                    $('.slideUpDP').toggle();
+                });
+                $('#slideUpDownbtn').click(function(){
+                    $('.slideUpimg').slideDown('fast');
+                    $('#slideUpDownbtn').toggle();
+                    $('#slideUpbtn').toggle();
+                    $('.slideUpDP').toggle();
+                    $('.slideUpP').toggle();
+                });
+                // Slide-Down
+                $('#slideDownbtn').click(function(){
+                    $('.slideDownimg').slideDown('fast');
+                    $('#slideDownbtn').toggle();
+                    $('#slideDownUpbtn').toggle();
+                    $('.slideDownP').toggle();
+                    $('.slideDownUpP').toggle();
+                });
+                $('#slideDownUpbtn').click(function(){
+                    $('.slideDownimg').slideUp('fast');
+                    $('#slideDownUpbtn').toggle();
+                    $('#slideDownbtn').toggle();
+                    $('.slideDownUpP').toggle();
+                    $('.slideDownP').toggle();
+                });
+                // Slide-Toggle
+                $('#toggleSlidebtn').click(function(){
+                    $('.toggleSlideimg').slideToggle();
+                    $('.toggleDP').toggle();
+                    $('.toggleUpP').toggle();
+                });
+                // Fade Out & In
+                $('#fadeOutbtn').click(function(){
+                    $('.fadeOutimg').fadeOut('slowly');
+                    $('#fadeOutInbtn').toggle();
+                    $('#fadeOutbtn').toggle();
+                    $('.fadeOutP').toggle();
+                    $('.fadeOutInP').toggle();
+                });
+                $('#fadeOutInbtn').click(function(){
+                    $('.fadeOutimg').fadeIn('slowly');
+                    $('#fadeOutbtn').toggle();
+                    $('#fadeOutInbtn').toggle();
+                    $('.fadeOutInP').toggle();
+                    $('.fadeOutP').toggle();
+                });
+                $('#fadeInbtn').click(function(){
+                    $('.fadeInimg').fadeIn('slowly');
+                    $('#fadeInbtn').toggle();
+                    $('#fadeInOutbtn').toggle();
+                    $('.fadeInP').toggle();
+                    $('.fadeInOutP').toggle();
+                });
+                $('#fadeInOutbtn').click(function(){
+                    $('.fadeInimg').fadeOut('slowly');
+                    $('#fadeInOutbtn').toggle();
+                    $('#fadeInbtn').toggle();
+                    $('.fadeInOutP').toggle();
+                    $('.fadeInP').toggle();
+                });
+                // Add Class
+                $('#addClassbtn').click(function(){
+                    $('.addClassP').addClass('highlight');
+                });
+                $('#rmvClassbtn').click(function(){
+                    $('.selected').removeClass('selected');
+                });
+                $('#addStyle').click(function(){
+                    $('.cssStyle').css({'background': 'blue', 'color': 'white'});
+                });
+                // After
+                $('#afterbtn').click(function(){
+                    $('.afterP').after('<h2>Use of the .after() manipulation method in action!</h2>');
+                });
+                $('#appendbtn').click(function(){
+                    $('.appendP').append('<p>Use of the .append() manipulation method in action!</p>');
+                });
+                $('#prependbtn').click(function(){
+                    $('.prependP').prepend('<p>Use of the .prepend() manipulation method in action!</p>');
+                });
+                $('#attrbtn').click(function(){
+                    $('.attrimg').attr('width', '500');
+                });
+                $('#beforebtn').click(function(){
+                    $('.beforeP').before('<h2>Use of the .before() manipulation method in action!</h2>');
+                });
+                $('#htmlbtn').click(function(){
+                    $('.htmlP').html('Use of the .html() manipulation method in action! It will replace the entire htmlP class with this message.');
+                });
+                $('#textbtn').click(function(){
+                    $('.textP').text('The .text() method takes all selected elements & changes the text markup of the element to this message.')
+                });
+                $('#valbtn').click(function(){
+                    $('input:text').css({'width': '350px'}).val('The .val() method is mostly used with HTML form elements');
+                });
+                $('.clickmet').click(function(){
+                    $(this).slideUp('slow');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1>Effects</h1>
+            <fieldset>
+                <legend>.hide()</legend>
+                <div class="section">
+                    <p id="hideHideP">Click the button to hide the image below!</p>
+                    <p id="showHideP">Click the button to show the image below!</p>
+                    <button id="hideHidebtn">Hide Image</button>
+                    <button id="showHidebtn">Show Image</button>
+                    <br>
+                    <img class="HideImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.show()</legend>
+                <div class="section">
+                    <p id="showShowP">Click the button to show the image below!</p>
+                    <p id="hideShowP">Click the button to hide the image below!</p>
+                    <button id="showShowbtn">Show Image</button>
+                    <button id="hideShowbtn">Hide Image</button>
+                    <br>
+                    <img class="ShowImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.toggle()</legend>
+                <div class="section">
+                    <p class="toggleone">Click the button to toggle the picture on!</p>
+                    <p class="toggletwo">Click the button to toggle the picture back off!</p>
+                    <button id="toggle">Toggle</button>
+                    <br>
+                    <img class="toggleimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.slideUp()</legend>
+                <div class="section">
+                    <button id="slideUpbtn">Slide Up</button>
+                    <button id="slideUpDownbtn">Slide Down</button>
+                    <br>
+                    <img class="slideUpimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                    <p class="slideUpP">Click the button to slide the image up off the screen!</p>
+                    <p class="slideUpDP">Click the button to slide the image back down on the screen!</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.slideDown()</legend>
+                <div class="section">
+                    <button id="slideDownbtn">Slide Down</button>
+                    <button id="slideDownUpbtn">Slide Up</button>
+                    <br>
+                    <img class="slideDownimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                    <p class="slideDownP">Click the button to slide an image down!</p>
+                    <p class="slideDownUpP">Click the button to slide the image back off the screen!</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.slideToggle()</legend>
+                <div class="section">
+                    <button id="toggleSlidebtn">Toggle Slide</button>
+                    <br>
+                    <img class="toggleSlideimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                    <p class="toggleDP">Click the button to toggle the image on the screen!</p>
+                    <p class="toggleUpP">Click the button to toggle the image back off the screen!</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.fadeOut()</legend>
+                <div class="section">
+                    <p class="fadeOutP">Click the button to have the image fade out!</p>
+                    <p class="fadeOutInP">Click the button to have the image fade back in!</p>
+                    <button id="fadeOutbtn">Fade Out</button>
+                    <button id="fadeOutInbtn">Fade In</button>
+                    <br>
+                    <img class="fadeOutimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background pic">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.fadeIn()</legend>
+                <div class="section">
+                    <p class="fadeInP">Click the button to fade the image in!</p>
+                    <p class="fadeInOutP">Click the button to fade the image back out!</p>
+                    <button id="fadeInbtn">Fade In</button>
+                    <button id="fadeInOutbtn">Fade Out</button>
+                    <br>
+                    <img class="fadeInimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background image">
+                </div>
+            </fieldset>
+
+            <h1>CSS</h1>
+            <fieldset>
+                <legend>.addClass()</legend>
+                <div class="section">
+                    <p class="addClassP">Click the button to add a class to this paragraph!</p>
+                    <button id="addClassbtn">Add Class</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.removeClass()</legend>
+                <div class="section">
+                    <p class="selected">Click the button to remove the class from this paragraph!</p>
+                    <button id="rmvClassbtn">Remove Class</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.css()</legend>
+                <div class="section">
+                    <p class="cssStyle">Click the button to add styling to this paragraph!</p>
+                    <button id="addStyle">Add Style</button>
+                </div>
+            </fieldset>
+
+            <h1>Manipulation</h1>
+            <fieldset>
+                <legend>.after()</legend>
+                <div class="section">
+                    <p class="afterP">Click the button to Add a paragraph after this one!</p>
+                    <button id="afterbtn">After</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.append()</legend>
+                <div class="section">
+                    <p class="appendP">Click the button to append a paragraph after this paragraph!</p>
+                    <button id="appendbtn">Append</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.prepend()</legend>
+                <div class="section">
+                    <p class="prependP">Click the button to insert the specified content as the first child of each element</p>
+                    <button id="prependbtn">Prepend</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.attr()</legend>
+                <div class="section">
+                    <p>Click the button to see the .attr() method in action by manipulating the image properties!</p>
+                    <button id="attrbtn">Attr</button>
+                    <br>
+                    <img class="attrimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmCpomzBi092CokaSu-EiG3x5GRQPwMl8yqA&usqp=CAU" alt="background img">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.before()</legend>
+                <div class="section">
+                    <p class="beforeP">Click the button to add content before this p-tag elemenet with the .before() function!</p>
+                    <button id="beforebtn">Before</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.html()</legend>
+                <div class="section">
+                    <p class="htmlP">This method does not accept any arguments. In an HTML document, .html() can be used to get the contents of any element. Click the button to manipulate this HTML ptag with the .html() function!</p>
+                    <button id="htmlbtn">Add HTML</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.text()</legend>
+                <div class="section">
+                    <p class="textP">Unlike the .html() method, .text() can be used in both XML and HTML documents. The result of the .text() method is a string containing the combined text of all matched elements.</p>
+                    <button id="textbtn">Add Text</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.val()</legend>
+                <div class="section">
+                    <p>The .val() method is primarily used to get the values of form elements such as input, select and textarea. When called on an empty collection, it returns undefined.</p>
+                    <input type="text" value="Click the button">
+                    <br>
+                    <button id="valbtn">Display Forms Input Value</button>
+                </div>
+            </fieldset>
+
+            <h1>Events</h1>
+            <fieldset>
+                <legend>.click()</legend>
+                <div class="section">
+                    <p class="clickmet">Click this ptag to slide it up!</p>
+                    <p class="clickmet">Click this ptag to slide it up!</p>
+                    <p class="clickmet">Click this ptag to slide it up!</p>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.on()</legend>
+                <div class="section">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.live()</legend>
+                <div class="section">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>.hover()</legend>
+                <div class="section">
+                </div>
+            </fieldset>
+        </div>
+    </body>
+</html>

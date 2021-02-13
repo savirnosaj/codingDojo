@@ -28,13 +28,13 @@ function printArray(nameArr, symNum, reversed){
         }
         if(reversed == true){
             for(idx = nameArr.length - 1; idx >= 0; idx--){
-                console.log(`${idx} ${symbol} ${names[idx]}`)
+                console.log(`${idx + 1} ${symbol} ${names[idx]}`)
             }
             break;
         }
         else {
             for(idx = 0; idx < nameArr.length; idx++){
-                console.log(`${idx} ${symbol} ${names[idx]}`)
+                console.log(`${idx + 1} ${symbol} ${names[idx]}`)
             }
         }
     }
@@ -43,4 +43,4 @@ function printArray(nameArr, symNum, reversed){
 /* pick a symbol and enter it's associated number:
 0 = -> | 1 = => | 2 = :: | 3 = ----
 */
-printArray(names, 1, false);
+printArray(names, 3, false);

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery Functions</title>
+        <!-- Javascript & jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            "use strict"; // JavaScript is flexable, however our JavaScript should be executed in "strict mode". With strict mode, you can not, for example, use undeclared variables. You can use strict mode in all your programs. It helps to write cleaner code, like preventing you from using undeclared variables.
+            // Effects methods ; these toggle the visibility of selectors\HTML elements
+            $(document).ready(function(){ // The jQuery .ready method allows all code to be exectued before this section is set to true ; document selects the whole HTML document
+                $('h1').click(function(){
+                    alert('The alert jQuery method makes this box pop up when the H1 tag is clicked');
+                });
+
+                $('#show').click(function(){
+                    $('h1').show();
+                });
+                $('#hide').click(function(){ // The jQuery .click method is a listener function that triggers when the designated element is clicked
+                    $('h1').hide(); // self-explanatory
+                });
+
+                // Manipulation methods ; these add/change the text or elements in a HTML document
+                $('h1').hover(function(){ // hover function can accept two functions, one when you're hovering over the designated element & when you're not
+                    $('h1').text('The jQuery .hover method is a listener that detects when the cursor is hovering the designated selector/element. The jQuery .text method changes the text in the HTML element when the listener becomes true');
+                }, function(){ // this secondary function triggers when the cursor isn't hovering over the designated element
+                    $('h1').text('Click Me or Hover!'); // change back to normal when you're not hovering over the H1 tags
+                });
+
+                $('#append').click(function(){
+                    $('.append-result').append('<h2>You just added this text with the .append method through the jQuery .click listener method</h2>'); // the append method will add text to the designated selector
+                })
+                // CSS method ; the CSS jQuery method allows you to manipulate the designated selectors styling 
+                $('button').click(function(){
+                    $('button').css('background-color', 'yellow');
+                })
+
+                // Setter: setter sets the value of something
+                $('#display').click(function(){
+                    $('.getter-setter').text('We added this text to the empty getter-setter p tag using the .text() setter function')
+                })
+
+                //Getter: getter function gets the value of something by storing the information in a variable
+                $('#display').click(function(){
+                    var results = $('.getter-setter').text();
+                    alert(results);
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Hover over Me!</h1>
+        <button id="hide">Hide H1 elements</button>
+        <button id="show">Show H1 elements</button>
+        <br>
+        <button id="append">Append</button>
+        <div class="append-result"></div>
+        <br>
+        <p class="getter-setter"></p>
+        <button id="display">Display Getter</button>
+    </body>
+</html>

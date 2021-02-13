@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<title>Javascript Demo</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: #000;
+        text-align: center;
+        margin: 25% auto;
+        color: #fff;
+        font-size: 50px;
+    }
+    #magic {
+        color: #fff;
+        display: inline;
+    }
+</style>
+<body>
+    Coding is <div id="magic"></div>
+
+    <script>
+        var words = ["intimidating", "extremely rewarding once learned", "easier to learn then expected", "learning and teaching"];
+        var wordCount = 0;
+        var characterCount = 0;
+
+        var magdiv = document.getElementById('magic');
+        
+        function iterateWordsChar() {
+            // using the DOM to change magic div into the first index value of Words array which is a string & incriminting all characters in the string;
+            magdiv.innerHTML += words[wordCount][characterCount++];
+            
+            if(characterCount == words[wordCount].length + 1){
+                wordCount += 1; //choose a different word
+                characterCount = 0; //start over with the first character of the word
+                magdiv.innerText = ''; //set the html magic div to be blank
+
+                if(wordCount == words.length){
+                    wordCount = 0;
+                }
+            }
+        }
+
+        setInterval(iterateWordsChar, 250);
+    </script>
+</body>
