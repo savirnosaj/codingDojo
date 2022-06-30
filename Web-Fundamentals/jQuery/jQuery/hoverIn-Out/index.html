@@ -1,0 +1,58 @@
+<!-- Create a simple HTML page with 4 images of equal width and height (you can use any image you like).
+When the mouse hovers on an image, have that be replaced by another image (on the same position).
+When the mouse hovers out of the image, bring the original image back. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover In, Then Out</title>
+    <!-- CSS -->
+    <style>
+        body {
+            padding: 25px;
+        }
+        .container {
+            padding: 15px;
+        }
+        .row {
+            text-align: center;
+        }
+        img {
+            display: inline-block;
+            width: 250px;
+        }
+        img:not(:last-child) {
+            margin-right: 35px;
+        }
+        h1 {
+            border-bottom: 3px solid #000;
+        }
+    </style>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('img').hover(function(){
+                var hold = $(this).attr('src');
+                $(this).attr('src', $(this).attr('data-alt-src'));
+                $(this).attr('data-alt-src', hold);
+                $(this).css('cursor', 'pointer');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Hover In, Then Out</h1>
+    <div class="container">
+        <div class="row">
+            <img src="img/cap1-page1.PNG" data-alt-src="img/cap1-page2.PNG">
+            <img src="img/cap2-page1.PNG" data-alt-src="img/cap2-page2.PNG">
+            <img src="img/cap3-page1.PNG" data-alt-src="img/cap3-page2.PNG">
+            <img src="img/cap4-page1.PNG" data-alt-src="img/cap4-page2.PNG">
+        </div>
+    </div>
+</body>
+</html>

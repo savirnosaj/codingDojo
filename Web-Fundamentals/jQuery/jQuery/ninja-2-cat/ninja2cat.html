@@ -1,0 +1,63 @@
+<!--
+Create a jQuery puzzle using two images sliced into five parts.
+Using jQuery, make it so that when each image slice is clicked, it will change to a different picture.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja 2 Cat</title>
+    <!-- CSS -->
+    <style>
+        body {
+            padding: 25px;
+        }
+        .container {
+            padding: 15px;
+        }
+        img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+        }
+        img:not(:last-child) {
+            margin-bottom: 5px;
+        }
+        h1 {
+            border-bottom: 3px solid #000;
+        }
+    </style>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('img').hover(function(){
+                $('img').css("cursor", "pointer");
+            });
+
+            $('img').click(function(){
+                var hold = $(this).attr('src');
+                // console.log(hold);
+                // console.log('data-alt-src value is', $(this).attr('data-alt-src'));
+                $(this).attr('src', $(this).attr('data-alt-src'));
+                $(this).attr('data-alt-src', hold);
+                // console.log($(this).attr('data-alt-src'));
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Ninja 2 Cat</h1>
+    <div class="container">
+        <p>Create a jQuery puzzle using two images sliced into five parts. Using jQuery, make it so that when each image slice is clicked, it will change to a different picture.</p>
+        <img id="b1" src="img/cat0.png" data-alt-src='img/ninja0.png'>
+        <img id="b2" src="img/ninja1.png" data-alt-src='img/cat1.png'>
+        <img id="b3" src="img/cat2.png" data-alt-src='img/ninja2.png'>
+        <img id="b4" src="img/ninja3.png" data-alt-src='img/cat3.png'>
+        <img id="b5" src="img/cat4.png" data-alt-src='img/ninja4.png'>
+    </div>
+</body>
+</html>

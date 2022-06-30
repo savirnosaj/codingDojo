@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery Functions</title>
+        <!-- CSS -->
+        <style>
+            .container {
+                border-bottom: 3px solid #000;
+                padding: 15px;
+                width: 50%;
+                text-align: center;
+            }
+            h1 {
+                text-transform: uppercase;
+            }
+            .container h2, button{
+                display: block;
+                margin: 0 auto;
+            }
+            img {
+                width: 300px;
+            }
+            button{
+                padding: 5px;
+                text-align: center;
+                background-color: #dc143c;
+                color: #fff;
+            }
+            .style {
+                background-color: #9932cc;
+                color: #fff;
+            }
+            .style2 {
+                background-color: #006400;
+                color: #fff;
+            }
+        </style>
+        <!-- jQuery Code -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                // CSS
+                $('img.fadImgIn').fadeOut(); // FADE IN
+                $('img.slideDownImg').slideUp(); // FADE DOWN
+                $('img.showImg').hide(); // SHOW
+                var getHTML = $(".req").html();
+                var getText = $(".reqQ").text();
+                var getVal = $('input').val();
+
+                // Effects
+
+                // Hide
+                $('button#hide').click(function(){
+                    $('img.hideImg').hide();
+                });
+                // Show
+                $('button#show').click(function(){
+                    $('img.showImg').show();
+                });
+                // Toggle
+                $('button#toggle').click(function(){
+                    $('img.toggleImg').toggle();
+                });
+                // Slide Down
+                $('button#slideUp').click(function(){
+                    $('img.slideUpImg').slideUp();
+                });
+                // Slide Down
+                $('button#slideDown').click(function(){
+                    $('img.slideDownImg').slideDown();
+                });
+                // Slide Toggle
+                $('button#slideToggle').click(function(){
+                    $('img.slideToggleImg').slideToggle();
+                });
+                // Fade Out
+                $('button#fadeOut').click(function(){
+                    $('img.fadImgOut').fadeOut();
+                });
+                // Fade In
+                $('button#fadeIn').click(function(){
+                    $('img.fadImgIn').fadeIn();
+                });
+
+                // CSS
+
+                // Add Class
+                $('button#addClass').click(function(){
+                    $('p.addStyle').addClass('style');
+                });
+                // Remove Class
+                $('button#removeClass').click(function(){
+                    $('p.style').removeClass('style');
+                });
+                // Remove Class
+                $('button#addCSS').click(function(){
+                    $('p.style2').css('background-color', '#1e90ff');
+                });
+
+                // Manipulators
+
+                // After
+                $('button#after').click(function(){
+                    $('.addAfter').after("<p class='style2'>Added Markup text after the specific element above (.addAfter)</p>");
+                });
+                // Append
+                $('button#append').click(function(){
+                    $('.appendValue').append(' Appended Text to this specific p tag');
+                });
+                // Prepend
+                $('button#prepend').click(function(){
+                    $('.prependValue').prepend('Prepended Text to this specific p tag ');
+                });
+                // Attr
+                $('button#attr').click(function(){
+                    $('img.attrImg').attr('height', '500px');
+                });
+                // Before
+                $('button#before').click(function(){
+                    $('.addbefore').before("<p class='style2'>Added Markup text before the specific element below (.addBefore)</p>");
+                });
+                // HTML - Get
+                $('button#gethtml').click(function(){
+                    $('.html1').html(getHTML);
+                });
+                // HTML - Set
+                $('button#sethtml').click(function(){
+                    $('.html2').html('<h1>All new content. You bet!</h1>');
+                });
+                // Text - Get
+                $('button#getText').click(function(){
+                    $('.text1').text(getText);
+                });
+                // Text - Set
+                $('button#setText').click(function(){
+                    $('.text2').text('All new content. You bet!');
+                });
+                // Val - Get
+                $('button#getVal').click(function(){
+                    $('.getValValue').text(getVal);
+                });
+                // Val - Set
+                $('button#setVal').click(function(){
+                    $('input').val("Here's new text");
+                });
+
+                // Events
+
+                // Click
+                $('.clickUp').click(function(){
+                    $(this).slideUp();
+                });
+                // On
+                $( ".on" ).on( "click", function() {
+                    alert( $( this ).text() );
+                });
+                // Hover
+                $('.hoverNow').hover(function() {
+                    $( this ).fadeOut();
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <!-- Effects -->
+        <h1>Effects</h1>
+        <!--  -->
+        <div class="container">
+            <h2>Hide()</h2>
+            <img class="hideImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="hide">Hide Image</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Show()</h2>
+            <img class="showImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="show">Show Image</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Toggle()</h2>
+            <img class="toggleImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="toggle">Toggle Image</button>
+        </div>
+        <div class="container">
+            <h2>Slide Up()</h2>
+            <img class="slideUpImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="slideUp">Slide Up Image</button>
+        </div>
+        <div class="container">
+            <h2>Slide Down()</h2>
+            <img class="slideDownImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="slideDown">Slide Down Image</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Slide Toggle()</h2>
+            <img class="slideToggleImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="slideToggle">Slide Toggle Image</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Fade Out()</h2>
+            <img class="fadImgOut" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="fadeOut">Fade Image Out</button>
+        </div>
+        <!--  -->
+        <div class="container">
+        <h2>Fade In()</h2>
+            <img class="fadImgIn" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="fadeIn">Fade Image In</button>
+        </div>
+        <!--  -->
+
+        <!-- CSS -->
+        <h1>CSS</h1>
+        <!--  -->
+        <div class="container">
+            <h2>Add Class()</h2>
+            <p class="addStyle">Click the button below to add 'Style' class (which consist on altereing CSS: background / text color)</p>
+            <button id="addClass">Add Class</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Remove Class()</h2>
+            <p class="style">Click the button below to remove 'Style' class (which consist on altereing CSS: background / text color)</p>
+            <button id="removeClass">Remove Class</button>
+        </div>
+        <div class="container">
+            <h2>CSS()</h2>
+            <p class="style2">Click the button below to edit the CSS of this particular p tag!</p>
+            <button id="addCSS">Add CSS</button>
+        </div>
+        <!--  -->
+
+        <!-- Manipulators -->
+        <h1>Manipulators</h1>
+        <!--  -->
+        <div class="container">
+            <h2>After()</h2>
+            <p class="addAfter">Click the button below to add HTML text after this specific p tag, to DOM</p>
+            <button id="after">Add After</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Append()</h2>
+            <p class="appendValue">Click the button below to append Markup text in this specific element</p>
+            <button id="append">Append</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Prepend()</h2>
+            <p class="prependValue">Click the button below to prepend Markup text in this specific element</p>
+            <button id="prepend">Prepend</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Attr</h2>
+            <p>Click the button below to change the attributes of this image</p>
+            <img class="attrImg" src="https://cdn.pixabay.com/photo/2019/01/14/10/23/glass-ball-3931999__340.jpg" alt="">
+            <button id="attr">Change Attr</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Before()</h2>
+            <p class="addbefore">Click the button below to add HTML text before this specific p tag, to DOM</p>
+            <button id="before">Add Before</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2 class="req">HTML()</h2>
+            <p class="html1">Click the button below to get HTML content from specific element (h2 tag), above</p>
+            <button id="gethtml">Get HTML</button>
+            <p class="html2">Click the button below to set the HTML to something different</p>
+            <button id="sethtml">Set HTML</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2 class="reqQ">Text()</h2>
+            <p class="text1">Click the button below to get Text content from specific element (h2 tag), above</p>
+            <button id="getText">Get Text</button>
+            <p class="text2">Click the button below to set the Text to something different</p>
+            <button id="setText">Set Text</button>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Val()</h2>
+            <input type="text" value="some text">
+            <p class="getValValue">Click the button below to set this p tag to equal the content value inside the input tag</p>
+            <button id="getVal">Get Val</button>
+            <p class="setValValue">Click the button below to replace the contect value inside the input tag</p>
+            <button id="setVal">Set Val</button>
+        </div>
+        <!--  -->
+
+        <!-- Events -->
+        <h1>Events</h1>
+        <!--  -->
+        <div class="container">
+            <h2>Click()</h2>
+            <p>Click each individual paragraph below to make it do something</p>
+            <p class="clickUp">First Paragraph</p>
+            <p class="clickUp">Second Paragraph</p>
+            <p class="clickUp">Yet one more Paragraph</p>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>On()</h2>
+            <p>Click each individual paragraph to get an alert containing the paragraphs content</p>
+            <p class="on">Here's the Deal</p>
+            <p class="on">Personal Protection Device</p>
+            <p class="on">Defend Seeds</p>
+        </div>
+        <!--  -->
+        <div class="container">
+            <h2>Hover()</h2>
+            <h3 class="hoverNow">Hove over here to fade out this h3 tag</h3>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pacman</title>
+        <style>
+            html, body {
+                background-color: #000;
+                margin: 0;
+            }
+            .row div {
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+            }
+            .wall {
+                background-color: #0000ff;
+            }
+            
+            /* .blank {} */
+            
+            .coin {
+                background: url('img/coin.gif');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .cherry {
+                background: url('img/cherry.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .ghost1 {
+                background: url('img/ghost1.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+            #pacman {
+                background: url('img/pacman.gif');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+            }
+            #secPacman {
+                background: url('img/pacman.gif');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                transform: rotate(180deg);
+            }
+            #scoreP1 {
+                border: 1px solid #fff;
+                padding: 5px;
+                text-align: center;
+                color: #fff;
+                width: 20px;
+                position: absolute;
+                top: 0;
+                left: 335px;
+            }
+            #scoreP2 {
+                border: 1px solid #fff;
+                padding: 5px;
+                text-align: center;
+                color: #fff;
+                width: 20px;
+                position: absolute;
+                top: 150px;
+                left: 335px;
+            }          
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="world"></div>
+            <div id="pacman"></div>
+            <div id="secPacman"></div>
+            <div id="scoreP1">0</div>
+            <div id="scoreP2">0</div>
+        </div>
+
+        <script>
+            // this is what the world will look like
+            var world = [
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 1, 0, 1, 0, 2, 0, 0, 0, 1, 1, 1, 1, 0, 1],
+                [1, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 1],
+                [1, 0, 0, 0, 1, 2, 0, 0, 6, 1, 1, 1, 0, 1, 0, 1],
+                [1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 3, 1, 0, 0, 0, 1],
+                [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+                [1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+                [1, 0, 1, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 1, 1, 1],
+                [1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+            ];
+
+            // when the forloop reaches a num value in the array, concatinate HTML text (<div class='value') into output value, and return the complete output value to the HTML world div, by using a conditional to add the specific div class value, according to the array index value that represents a specific object (wall, enemy, coin)
+            function displayWorld(){
+                var output = "";
+
+                for(var i = 0; i < world.length; i++){
+                    output += "\n<div class='row'>\n";
+                    for(var j = 0; j < world[i].length; j++){
+                        if(world[i][j] == 1){
+                            output += "<div class='wall'></div>";
+                        }
+                        else if(world[i][j] == 0){
+                            output += "<div class='blank'></div>";
+                        }
+                        else if(world[i][j] == 2){
+                            output += "<div class='coin'></div>";
+                        }
+                        else if(world[i][j] == 3){
+                            output += "<div class='cherry'></div>";
+                        }
+                        else if(world[i][j] == 6){
+                            output += "<div class='ghost1'></div>";
+                        }
+                    }
+                    output += "\n</div>";
+                }
+                // console.log(output);
+                document.getElementById('world').innerHTML = output;
+            }
+
+            // call function to draw map onto HTML page (div = world)
+            displayWorld();
+
+            // set the position in array to mimic world array movement & placement
+            var pacman = {
+                x : 1,
+                y : 1
+            }
+
+            // Script to move the 'pacman' html div by changing the top and right atr styling (display it to start on START)
+            function displayPacman(){
+                document.getElementById('pacman').style.top = pacman.y * 24 + "px";
+                document.getElementById('pacman').style.left = pacman.x * 20 + "px";
+            }
+
+            // Place Pacman into position when browser loads file
+            displayPacman();
+
+            var secondPacman = {
+                x : 14,
+                y : 10
+            }
+
+            // Script to move the 'pacman' html div by changing the top and right atr styling (display it to start on START)
+            function displaySecPacman(){
+                document.getElementById('secPacman').style.top = secondPacman.y * 24 + "px";
+                document.getElementById('secPacman').style.left = secondPacman.x * 20 + "px";
+            }
+
+            // Place Pacman into position when browser loads file
+            displaySecPacman();
+
+            var scoreP1 = 0;
+
+            // Set the inner HTML of "score" div to value of score variable
+            function displayP1Score(){
+                document.getElementById('scoreP1').innerHTML = scoreP1;
+            }
+
+            // Load Score value when browser runs file
+            displayP1Score();
+
+            var scoreP2 = 0;
+
+            // Set the inner HTML of "score" div to value of score variable
+            function displayP2Score(){
+                document.getElementById('scoreP2').innerHTML = scoreP2;
+            }
+            
+            // Load Score value when browser runs file
+            displayP2Score();
+
+            // Script: pass a value (e: parameter that contains 'up'/'down', 'left'/"right" value) to browser function ('onkeydown')
+            document.onkeydown = function(e){
+                // && operator checking if next move is NOT the wall (1 = wall) 
+                if(e.keyCode == 37 && world[pacman.y][pacman.x - 1] != 1){ // Left
+                    document.getElementById("pacman").style.transform = "rotate(180deg)";
+                    pacman.x --;
+                }
+                else if(e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 1){ // Right
+                    document.getElementById("pacman").style.transform = "rotate(0deg)";
+                    pacman.x ++;
+                }
+                else if(e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 1){ // Up
+                    document.getElementById("pacman").style.transform = "rotate(270deg)";
+                    pacman.y --;
+                }
+                else if(e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 1){ // Down
+                    document.getElementById("pacman").style.transform = "rotate(90deg)";
+                    pacman.y ++;
+                }
+
+                else if(e.keyCode == 65 && world[secondPacman.y][secondPacman.x - 1] != 1){ // Left
+                    document.getElementById("secPacman").style.transform = "rotate(180deg)";
+                    secondPacman.x --;
+                }
+                else if(e.keyCode == 68 && world[secondPacman.y][secondPacman.x + 1] != 1){ // Right
+                    document.getElementById("secPacman").style.transform = "rotate(0deg)";
+                    secondPacman.x ++;
+                }
+                else if(e.keyCode == 87 && world[secondPacman.y - 1][secondPacman.x] != 1){ // Up
+                    document.getElementById("secPacman").style.transform = "rotate(270deg)";
+                    secondPacman.y --;
+                }
+                else if(e.keyCode == 83 && world[secondPacman.y + 1][secondPacman.x] != 1){ // Down
+                    document.getElementById("secPacman").style.transform = "rotate(90deg)";
+                    secondPacman.y ++;
+                }
+
+                // Conditional checks pacmans location: if location matches key-value (coin, enemy), perform logic
+                if(world[pacman.y][pacman.x] == 2){
+                    // set the array value to "empty" after picking up coin
+                    world[pacman.y][pacman.x] = 0;
+                    scoreP1 += 10;
+                    // update score and update for world
+                    displayWorld();
+                    displayP1Score();
+                }
+                else if(world[pacman.y][pacman.x] == 3){
+                    // set the array value to "empty" after picking up cherry
+                    world[pacman.y][pacman.x] = 0;
+                    scoreP1 += 50;
+                    displayWorld();
+                    displayP1Score();
+                }
+                else if(world[pacman.y][pacman.x] == 6){
+                    document.getElementById('pacman').style.display = "none";
+                    displayWorld();
+                }
+                // Sec Pacman
+                if(world[secondPacman.y][secondPacman.x] == 2){
+                    // set the array value to "empty" after picking up coin
+                    world[secondPacman.y][secondPacman.x] = 0;
+                    scoreP2 += 10;
+                    // update score and update for world
+                    displayWorld();
+                    displayP2Score();
+                }
+                else if(world[secondPacman.y][secondPacman.x] == 3){
+                    // set the array value to "empty" after picking up cherry
+                    world[secondPacman.y][secondPacman.x] = 0;
+                    scoreP2 += 50;
+                    displayWorld();
+                    displayP2Score();
+                }
+                else if(world[secondPacman.y][secondPacman.x] == 6){
+                    document.getElementById('secPacman').style.display = "none";
+                    displayWorld();
+                }
+                // console.log(e.keyCode);
+                displayPacman();
+                displaySecPacman();
+            }
+
+            var direction = ["Left", "Right", "Up", "Down"];
+
+            // another forloop to determine position of enemies: when located, enemy will move according to decision made for it (i.e. value in choice variable)
+            function moveEnemy(){
+                for(var i = 0; i < world.length; i++){
+                    for(var j = 0; j < world[i].length; j++){
+                        if(world[i][j] == 6){
+                            var choice = Math.floor(Math.random() * 4);
+                            if(direction[choice] === "Left"){
+                                if(world[i][j - 1] != 1){ // Left
+                                    world[i][j] = 0;
+                                    world[i][j - 1] = 6;
+                                }
+                                else {
+                                    continue
+                                }
+                            }
+                            else if(direction[choice] === "Right"){
+                                if(world[i][j + 1] != 1){ // Right
+                                    world[i][j] = 0;
+                                    world[i][j + 1] = 6;
+                                }
+                                else {
+                                    continue
+                                }
+                            }
+                            else if(direction[choice] === "Up"){
+                                if(world[i - 1][j] != 1){ // Up
+                                    world[i][j] = 0;
+                                    world[i - 1][j] = 6;
+                                }
+                                else {
+                                    continue
+                                }
+                            }
+                            else if(direction[choice] === "Down"){
+                                if(world[i + 1][j] != 1){ // Up
+                                    world[i][j] = 0;
+                                    world[i + 1][j] = 6;
+                                }
+                                else {
+                                    continue
+                                }
+                            }
+                        }
+                        displayWorld();
+                    }
+                }
+            }
+
+            setInterval(moveEnemy, 1500);
+        </script>
+    </body>
+</html>

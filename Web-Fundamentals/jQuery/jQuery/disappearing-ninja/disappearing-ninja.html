@@ -1,0 +1,111 @@
+<!--
+Create a simple HTML page with 8 images of equal width and height (you can use any image you like).
+When a particular image is clicked, have that image disappear. Also, include a button on the bottom of the page called 'Restore'.
+When the button is clicked, all images will appear.
+
+There is no need for you to keep the images appearing where they used to appear.
+For example, clicking on the 7th image does not need to show an empty spot where the 7th image used to be.
+The 8th image could instead move to where 7th image used to be.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disappearing Ninja</title>
+    <!-- CSS -->
+    <style>
+        body {
+            padding: 15px;
+        }
+        .container {
+            padding: 15px;
+        }
+        .row {
+           width: 100%;
+           text-align: center;
+        }
+        .ninja {
+            padding: 5px;
+            width: 250px;
+            display: inline-block;
+        }
+        .ninja:not(:last-child) {
+            margin-right: 50px;
+        }
+        img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1 {
+            border-bottom: 3px solid #000;
+        }
+        button {
+            padding: 15px;
+            border: 3px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #1e90ff;
+            margin-left: 75px;
+        }
+    </style>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.ninja').hover(function(){ // HOVER when cursor is over Ninja to let know it's clickable
+                $('.ninja').css("cursor", "pointer");
+            });
+            $('.ninja').click(function(){ // On CLICK, hide the ninja divs
+                $( this ).css('display', 'none');
+            });
+            $('#restore').hover(function(){ // HOVER when cursor is over BUTTON to let know it's clickable
+                $('#restore').css("cursor", "pointer");
+            });
+            $('#restore').click(function(){
+                $('.ninja').css('display', 'inline-block');
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Disappearing Ninja</h1>
+    <div class="container">
+        <div class="row">
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+            <div class="ninja">
+                <img src="img/ninja.PNG" alt="Ninja">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button id="restore">Restore</button>
+    </div>
+</body>
+</html>
