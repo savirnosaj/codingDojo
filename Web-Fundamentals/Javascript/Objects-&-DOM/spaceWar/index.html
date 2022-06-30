@@ -1,0 +1,388 @@
+<html>
+<head>
+	<title>1942 Game</title>
+
+<style type="text/css">
+	body{
+		background-color:black;
+	}
+	#container{
+		background: url('./space-BG.jpg');
+		width:800px;
+		height:550px;
+	}
+	#hero{
+		background: url('1942.gif');
+		background-position: -85px -180px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy1{
+		background: url('1942.gif');
+		background-position: -30px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy2{
+		background: url('1942.gif');
+		background-position: -120px -5px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy3{
+		background: url('1942.gif');
+		background-position: -60px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.missle{
+		background: url('1942.gif');
+		background-position: -185px -400px;
+		width:18px;
+		height:18px;
+		position:absolute;
+	}
+	#explosion {
+		background: url('1942.gif');
+		background-position: -145px -30px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	#score{
+		position:absolute;
+		border:10px solid red;
+		top:20px;
+		left:810px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;	
+	}
+	#pause{
+		z-index: 0;
+		position:absolute;
+		border:10px solid red;
+		top:105px;
+		left:800px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;
+		width: 125px;
+	}
+	#play{
+		z-index: -10;
+		position:absolute;
+		border:10px solid red;
+		top:105px;
+		left:800px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;
+		width: 125px;
+	}
+</style>
+</head>
+<body>
+	<div id='container'>
+		<div id='hero'></div>
+		<div id='enemies'></div>
+		<div id='missles'></div>
+		<div id='explosions'></div>
+		<audio id="myAudio">
+			<!-- <source src="horse.ogg" type="audio/ogg">
+			<source src="horse.mp3" type="audio/mpeg"> -->
+			<source src="explosion.wav" type="audio/wav">
+			Your browser does not support the audio element.
+		</audio>
+	</div>
+
+	<div id='score'>0</div>
+	<button id="pause" onclick="pauseGame()">Pause</button>
+	<button id="play" onclick="playGame()">Play</button>
+
+
+<script>
+	// setting the location of the player through a dictionary
+	var hero = {
+		x : 400,
+		y: 450
+	}
+
+	
+	var enemies = [{x: 250, y: 125, rank: 2}, {x: 325, y: 175, rank: 1}, {x: 400, y: 100, rank: 2}, {x: 400, y: 250, rank: 2}, {x: 475, y: 175, rank: 1}, {x: 550, y: 125, rank: 2},
+	{x: 250, y: 25, rank: 3}, {x: 325, y: 25, rank: 1}, {x: 400, y: 25,rank: 1}, {x: 400, y: 25, rank: 1}, {x: 475, y: 25, rank: 1}, {x: 550, y: 25, rank: 3}];
+
+	// setting html div 'hero' to set when browser loads page
+	function displayHero(){
+		document.getElementById('hero').style['top'] = hero.y + "px";
+		document.getElementById('hero').style['left'] = hero.x + "px";
+	}
+	
+	displayHero();
+	
+	function displayEnemies(){
+		var output = '';
+		for(var i = 0; i < enemies.length; i++){
+			if(enemies[i].rank == 1){
+				output += "<div class='enemy1' style='top:" + enemies[i].y + "px; left:" + enemies[i].x + "px;'></div>";
+			}
+			else if(enemies[i].rank == 2){
+				output += "<div class='enemy2' style='top:" + enemies[i].y + "px; left:" + enemies[i].x + "px;'></div>";
+			}
+			else if(enemies[i].rank == 3){
+				output += "<div class='enemy3' style='top:" + enemies[i].y + "px; left:" + enemies[i].x + "px;'></div>";
+			}
+		}
+		document.getElementById('enemies').innerHTML = output;
+	}
+
+	displayEnemies();
+
+	var pause = false;
+	
+	function moveEnemies(){
+		for(var i = 0; i < enemies.length; i++){
+			if(pause == false){
+				enemies[i].y += 5;
+
+				if(enemies[i].y > 550){
+					enemies[i].y = 0;
+					enemies[i].x = Math.random() * 650;
+				}
+			}
+			else {
+				enemies[i].y += 0;
+			}
+		}
+	}
+
+	var missles = [];
+
+	function displayMissles(){
+		var output = "";
+		for(var i = 0; i < missles.length; i++){
+			output += "<div class='missle' style='top:" + missles[i].y + "px; left:" + missles[i].x + "px;'></div>";
+		}
+		document.getElementById('missles').innerHTML = output;
+	}
+
+	function moveMissles(){
+		for(var i = 0; i < missles.length; i++){
+			if(pause == false){
+				missles[i].y -= 8;
+	
+				if(missles[i].y < 0){
+					missles[i] = missles[missles.length - 1];
+					missles.pop();
+				}
+			}
+			else {
+				missles[i].y -= 0;
+			}
+		}
+	}
+
+	var snd1  = new Audio();
+	var src1  = document.createElement("source");
+	src1.type = "audio/wav";
+	src1.src  = "explosion.wav";
+	snd1.appendChild(src1);
+
+	var snd2  = new Audio();
+	var src2  = document.createElement("source");
+	src2.type = "audio/wav";
+	src2.src  = "explosion.wav";
+	snd2.appendChild(src2);
+
+	var snd3  = new Audio();
+	var src3  = document.createElement("source");
+	src3.type = "audio/wav";
+	src3.src  = "explosion.wav";
+	snd3.appendChild(src3);
+
+	var exCoordinate = 0;
+	var whyCoordinate = 0;
+
+	function detectCollision(){
+		for(var i = 0; i < missles.length; i++){
+			for(var j = 0; j < enemies.length; j++){
+				if(Math.abs(missles[i].x - enemies[j].x) < 15 && Math.abs(missles[i].y - enemies[j].y) < 10){
+					if(enemies[j].rank == 1){
+						console.log('missle', i, ' collided with enemy', j);
+						Score += 10;
+						
+						exCoordinate = enemies[j].x;
+						console.log(exCoordinate);
+						whyCoordinate = enemies[j].y;
+						console.log(whyCoordinate);
+	
+						enemies[j] = enemies[enemies.length - 1];
+						enemies.pop();
+						missles[i] = missles[missles.length - 1];
+						missles.pop();
+
+						createAnimation();
+						snd1.play();
+					}
+					else if(enemies[j].rank == 2){
+						console.log('missle', i, ' collided with enemy', j);
+						Score += 10;
+						
+						exCoordinate = enemies[j].x;
+						console.log(exCoordinate);
+						whyCoordinate = enemies[j].y;
+						console.log(whyCoordinate);
+	
+						enemies[j] = enemies[enemies.length - 1];
+						enemies.pop();
+						missles[i] = missles[missles.length - 1];
+						missles.pop();
+
+						createAnimation();
+						snd2.play();
+					}
+					else if(enemies[j].rank == 3){
+						console.log('missle', i, ' collided with enemy', j);
+						Score += 10;
+						
+						exCoordinate = enemies[j].x;
+						console.log(exCoordinate);
+						whyCoordinate = enemies[j].y;
+						console.log(whyCoordinate);
+	
+						enemies[j] = enemies[enemies.length - 1];
+						enemies.pop();
+						missles[i] = missles[missles.length - 1];
+						missles.pop();
+
+						createAnimation();
+						snd3.play();
+					}
+				}
+			}
+		}
+	}
+
+	function detectPlayer(){
+		for(var i = 0; i < enemies.length; i++){
+			if(Math.abs(enemies[i].x - hero.x) < 15 && Math.abs(enemies[i].y - hero.y) < 10){
+				Score -= 500;
+				console.log("There was a crash!");
+			}
+		}
+	}
+
+	function concatBoom(){
+		var output = "";
+		output += "<div id='explosion' style='top:" + whyCoordinate + "px; left:" + exCoordinate + "px;'></div>";
+		document.getElementById('explosions').innerHTML = output;
+	}
+
+	function animationOne(){
+		// console.log('ONE');
+		document.getElementById("explosion").style.backgroundPosition = "-110px -30px";
+	}
+
+	function animationTwo(){
+		document.getElementById('explosion').style.backgroundPosition = "-85px -30px";
+		// console.log('TWO');
+	}
+
+	function animationThree(){
+		document.getElementById('explosion').style.backgroundPosition = "-60px -30px";
+		// console.log('THREE');
+	}
+
+	function animationFour(){
+		document.getElementById('explosion').style.backgroundPosition = "-30px -30px";
+		document.getElementById('explosion').style.display = "none";
+		// console.log('FOUR');
+	}
+
+	function createAnimation(){
+		firstRun = setTimeout(function () {
+			concatBoom();
+		}, 100);
+		secondRun = setTimeout(function () {
+			animationOne();
+		}, 200);
+		thirdRun = setTimeout(function () {
+			animationTwo();
+		}, 300);
+		fourthRun = setTimeout(function () {
+			animationThree();
+		}, 400);
+		fifthRun = setTimeout(function () {
+			animationFour();
+		}, 260);
+	}
+
+	var Score = 0;
+
+	function displayScore(){
+		document.getElementById('score').innerHTML = Score;
+	}
+
+	function gameLoop(){
+		displayHero();
+		moveEnemies();
+		displayEnemies();
+		displayMissles();
+		moveMissles();
+		detectCollision();
+		detectPlayer();
+		displayScore();
+	}
+
+	 setInterval(gameLoop, 55);
+
+	function pauseGame(){
+		document.getElementById('play').style.zIndex = "0";
+		document.getElementById('pause').style.zIndex = "-10";
+		console.log("Pause");
+		pause = true;
+	}
+
+	function playGame(){
+		document.getElementById('pause').style.zIndex = "0";
+		document.getElementById('play').style.zIndex = "-10";
+		console.log("Play");
+		pause = false;
+	}
+
+	document.onkeydown = function(e) {
+		if(e.keyCode == 37 && pause != true){ // LEFT
+			hero.x -= 10;
+		}
+		else if(e.keyCode == 38 && pause != true){ // UP
+			hero.y -= 10;
+		}
+		else if(e.keyCode == 39 && pause != true){ // RIGHT
+			hero.x += 10;
+		}
+		else if(e.keyCode == 40 && pause != true){ // DOWN
+			hero.y += 10;
+		}
+		else if(e.keyCode == 32){
+			if(pause == false){
+				missles.push({x : hero.x + 6, y: hero.y - 15});
+				displayMissles();
+			}
+			else {
+				document.getElementById('missles').style.display = "none;";
+			}
+		}
+		displayHero();
+	}
+
+</script>
+
+</body>
+</html>
