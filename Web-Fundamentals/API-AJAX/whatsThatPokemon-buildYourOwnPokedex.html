@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Poke API</title>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <style>
+            body {background-color: #000;}
+            #pokemon {float: left;width: 70%;}
+            #pokedex {float: left;box-sizing: border-box;padding: 5px;}
+            #pkName{color:#fff;text-transform: capitalize;}
+            #pkTypes{color:#fff;text-transform: capitalize;}
+            #pkHeight{color:#fff;}
+            #pkWeight{color:#fff;}
+        </style>
+        <!-- add http:// before the website name -->
+        <script>
+            $(document).ready(function() {
+                var pokedex = "";
+
+                for(var i = 1; i < 15; i++){
+                    pokedex += "<img id=" + i + " src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + i + ".png'>";
+                }
+                document.getElementById('pokemon').innerHTML = pokedex;
+
+                $('img').click(function(){
+                    $('#pokedex').css("border", "#fff 2px solid")
+                    var value = this.id;
+                    $.get("https://pokeapi.co/api/v2/pokemon/" + value, function(result){
+                        $('#pkName').html(result.name);
+                        $('#pkImg').html("<img id=" + i + " src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + value + ".png'>");
+                        var typesArr = "";
+                        for(var i = 0; i < result.types.length; i++){
+                            typesArr += "<li>" + result.types[i].type.name + "</li>";
+                        };
+                        $('#pkTypes').html(typesArr);
+                        $('#pkHeight').html("Height: " + result.height + " '");
+                        $('#pkWeight').html("Weight: " + result.weight + " lbs");
+                    }, "json");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="pokemon"></div>
+        <div id="pokedex">
+            <div id="pkName"></div>
+            <div id="pkImg"></div>
+            <ul id="pkTypes"></ul>
+            <div id="pkHeight"></div>
+            <div id="pkWeight"></div>
+        </div>
+    </body>
+</html>

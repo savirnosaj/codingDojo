@@ -1,0 +1,8 @@
+Simple Blog
+
+Objectives:
+How do we decide how to design our databases?
+What are the steps to create an ERD in MySQL Workbench?
+The best way to learn how to map out your tables is to look at a few examples. We will be going through a series of examples in the next 5 tabs before we continue with the assignments. 
+
+Study the wireframe below and then watch the video to see one way we could have laid out our ERD.

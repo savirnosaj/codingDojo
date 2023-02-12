@@ -1,0 +1,6 @@
+Product Categories
+
+Objectives:
+
+Gain familiarity with designing ERDs
+Look at the wireframe below and create an ERD diagram. Then look at the video afterwards and compare your ERD diagram with the demo.

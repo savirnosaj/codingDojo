@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game of Thrones</title>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <!-- CSS -->
+        <style>
+            img {
+                width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="houses">
+            <img id="1" src="./stark.jpg" alt="stark house">
+            <img id="2" src="./targaryen.jpg" alt="targaryen house">
+            <img id="3" src="./lannister.jpg" alt="lannister house">
+            <img id="4" src="./baratheon.png" alt="baratheon house">
+        </div>
+        <fieldset>
+            <legend>Houses</legend> 
+            <div id="houseInfo"></div>
+        </fieldset>
+        <!-- JS -->
+        <script>
+            $(document).ready(function(){
+                $('img').click(function(){
+                    if(this.id == 1){
+                        $.get("https://anapioficeandfire.com/api/houses/17", function(result){
+                            console.log(result.name);
+                            var html = "";
+                            html += "<p>Name: <b>" + result.name + "</b></p>";
+                            html += "<p>Words: <b>" + result.words + "</b></p>";
+                            html += "<p>Titles: <b>" + result.titles + "</b></p>";
+                            $("#houseInfo").html(html);
+                        }, "json");
+                    }
+                    else if(this.id == 2){
+                        $.get("https://anapioficeandfire.com/api/houses/229", function(result){
+                            console.log(result.name);
+                            var html = "";
+                            html += "<p>Name: <b>" + result.name + "</b></p>";
+                            html += "<p>Words: <b>" + result.words + "</b></p>";
+                            html += "<p>Titles: <b>" + result.titles + "</b></p>";
+                            $("#houseInfo").html(html);
+                        }, "json");
+                    }
+                    else if(this.id == 3){
+                        $.get("https://anapioficeandfire.com/api/houses/362", function(result){
+                            console.log(result.name);
+                            var html = "";
+                            html += "<p>Name: <b>" + result.name + "</b></p>";
+                            html += "<p>Words: <b>" + result.words + "</b></p>";
+                            html += "<p>Titles: <b>" + result.titles + "</b></p>";
+                            $("#houseInfo").html(html);
+                        }, "json");
+                    }
+                    else if(this.id == 4){
+                        $.get("https://anapioficeandfire.com/api/houses/378", function(result){
+                            console.log(result.name);
+                            var html = "";
+                            html += "<p>Name: <b>" + result.name + "</b></p>";
+                            html += "<p>Words: <b>" + result.words + "</b></p>";
+                            html += "<p>Titles: <b>" + result.titles + "</b></p>";
+                            $("#houseInfo").html(html);
+                        }, "json");
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!--
+Create a jQuery puzzle using two images sliced into five parts.
+Using jQuery, make it so that when each image slice is clicked, it will change to a different picture.-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sorting Ninja</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/humanity/jquery-ui.css">
+        <style>
+            body {padding: 25px;}
+            .container {padding: 15px;}
+            img {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+            }
+            img:not(:last-child) {margin-bottom: 5px;}
+            h1 {border-bottom: 3px solid #000;}
+            #sortable { list-style-type: none; margin: 0; padding: 0; width: 10%; }
+            #sortable li { margin: 0;}
+        </style>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('img').hover(function(){
+                    $('img').css("cursor", "pointer");
+                });
+                $( "#sortable" ).sortable();
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Sorting Ninja</h1>
+        <div class="container">
+            <p>Create a Sortable Ninja puzzle using jQueryUI. You should be able to click and drag any of the images to a new position within the list and the rest of the images should adjust to fit the new order.</p>
+            <ul id="sortable">
+                <li class="ui-state-default">
+                    <img src="img/ninja4.png">
+                </li>
+                <li class="ui-state-default">
+                    <img src="img/ninja2.png">
+                </li>
+                <li class="ui-state-default">
+                    <img src="img/ninja1.png">
+                </li>
+                <li class="ui-state-default">
+                    <img src="img/ninja0.png">
+                </li>
+                <li class="ui-state-default">
+                    <img src="img/ninja3.png">
+                </li>
+              </ul>
+        </div>
+    </body>
+</html>

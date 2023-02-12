@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Very Own Weather Forecast App</title>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <!-- CSS -->
+        <style>
+            ul {
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <input id="cityInput" type="text">
+            <input type="submit" value="Search">
+        </form>
+        <ul id="cityData"></ul>
+        <!-- JS -->
+        <script>
+            $(document).ready(function(){
+                $('form').submit(function(){
+                    var api_key = 'f60d1ee28a4a95d537ebec0566d136a0';
+                    var city = $('#cityInput').val();
+                    $.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key, function(result){
+                        var results = "";
+                        results += "<li>Description: " + result.weather[0].description + "</li>";
+                        results += "<li>Temperature: " + result.main.temp + "</li>";
+                        results += "<li>Lon: " + result.coord.lon + " Lat: " + result.coord.lat + "</li>";
+                        $("#cityData").html(results)
+                    }, "json");
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

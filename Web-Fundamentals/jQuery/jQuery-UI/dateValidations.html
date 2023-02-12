@@ -1,0 +1,78 @@
+<!-- 
+Design a simple registration form with validation. Make sure your page doesn't allow the form to submit in any case.
+If the required information is there when the form is submitted, an alert box will pop up with the valid information being displayed.
+If the name is not included, have an error message appear. Feel free to add more fields and create validations for them. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Date Validation</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/humanity/jquery-ui.css">
+        <style>
+            h1 {
+                border-bottom: 3px solid #000;
+            }
+            form {
+                margin-left: 10px;
+            }
+            .btn {
+                padding: 5px;
+                background-color: #8b008b;
+                color: #fff;
+                border: 1px solid #8b008b;
+                border-radius: 5px;
+                margin-top: 5px;
+            }
+        </style>
+        <!-- jQuery -->
+        <script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#datepicker').datepicker();
+                $('#datepicker2').datepicker();
+                
+                $('form').submit(function(){
+                    $(this).serialize();
+                    console.log($(this).serialize());
+                    //console.log($('#datepicker').val());
+                    if($('#datepicker').val() == 0){
+                        alert('No added Date to Depart');
+                        return false;
+                    }
+                    else if($('#datepicker2').val() == 0){
+                        alert('No added Date for Return');
+                        return false;
+                    }
+                    else if($('#nameForm').val() == 0){
+                        alert('Please enter your Name');
+                        return false;
+                    }
+                    alert('Thanks ' + $('#nameForm').val() + '! Your cruise leaves on ' + $('#datepicker').val() + ' and returns on ' + $('#datepicker2').val());
+                    return false;
+                });
+
+                $('.btn').hover(function(){
+                    $(this).css('cursor', 'pointer');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Date Validations</h1>
+        <p>Design a simple registration form with validation. Make sure your page doesn't allow the form to submit in any case. If the required information is there when the form is submitted, an alert box will pop up with the valid information being displayed. If the name is not included, have an error message appear. Feel free to add more fields and create validations for them.</p>
+        <form>
+            <label for="from">From</label><br>
+            <input type="text" name="from" id="datepicker"><br>
+            <label for="to">To</label><br>
+            <input type="text" name="to" id="datepicker2"><br>
+            <label for="name">Name</label><br>
+            <input type="text" name="name" id="nameForm"><br>
+            <input type="submit" class="btn">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+Assignment: Practice your pip in your virtual environment
+
+**Run these commands in the order instructed. Your assignment submission should be a .txt file that includes a short explanation of what you were able to learn about each command by doing a brief (1-2 min) web search for each term.**
+
+1) pip install Django==1.11.9
+-----------------------------
+** this command will download and install django into my activated virtualenv.
+** I noticed a dependecy called 'pytz' was also installed during the pip django installation. A quick internet search on this software package/library defines it as a database that allows for accurate and cross platform timezone calculations.
+
+2) pip list
+-----------
+** this command will return a list of all packages installed in your virtualenv along with the specific version of those packages.
+
+3) deactivate
+-------------
+** this command will exit the current activated virtualenv shell and return you to the original shell before the activation of the current virtualenv shell.
+
+4) pip3 list (while not in a virtualenv)
+----------------------------------------
+** I'm assuming since I didn't get the same result from the activated-shell -> deactivated-shell, that nothing went wrong, however, the assignment suggest that the command would have returned less values, but that isn't the case with my experience. The opposite occured. Here is what was returned while not in a activated virtualenv:
+asgiref (3.4.1)
+distlib (0.3.6)
+filelock (3.4.1)
+importlib-metadata (4.8.3)
+importlib-resources (5.4.0)
+pip (9.0.1)
+platformdirs (2.4.0)
+pytz (2022.7)
+setuptools (28.8.0)
+sqlparse (0.4.3)
+typing-extensions (4.1.1)
+virtualenv (20.17.1)
+zipp (3.6.0)
+
+5) call myEnvironments/py3Env/Scripts/activate
+----------------------------------------------
+** running this command simply allows you to activate your virtualenv from any current directory
+
+6) pip freeze
+** what I can observe is pip freeze just returns the packages that you manually downloaded and installed, NOT the default packages that were added when the virtualenv was created
+
+7) pip freeze > requirements.txt
+** this command created a txt file detailing the packages installed in the current activated virtualenv
+
+8) pip uninstall Django
+** this command does exactly what is says.
+
+9) pip show Django
+** since we uninstalled Django, the console returned what is expected:
+** WARNING: Package(s) not found: Django
+

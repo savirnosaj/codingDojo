@@ -1,0 +1,305 @@
+<!-- Using other jQuery Libraries
+Search on the internet for some cool jQuery libraries. When you're building your project, it's helpful that you
+understand what other jQuery/JavaScript libraries are out there. Get familiar with some cool JavaScript libraries
+and see if you can make something cool! Later in the bootcamp, you'll learn more about JavaScript and you'll know
+how to use more advanced JavaScript libraries. For now, try to get yourself familiar with some cool JavaScript
+libraries as well as what these will allow you to do. We're seeing that more companies are looking for developers
+who understand how to use JavaScript as well as those who know how to quickly integrate other JavaScript libraries. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Library</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./jQueryLibraries/jquery.avgrund.js/style/avgrund.css">
+    <style>
+      h1 {
+        border-bottom: 3px solid #000;
+      }
+      .btn-primary {
+        padding: 5px;
+        background-color: #8a2be2;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 5px;
+      }
+      .demo {
+        padding: 50px;
+        border:1px solid #ccc;
+        font-weight:bold;
+        color: red;
+        font-size:20px;
+        line-height:1.5;
+        text-align:center;
+      }
+
+      .demo h1 { font-size:72px;  text-transform:uppercase; margin-bottom:0px;}
+      .char2,
+      #demo2 .word2,
+      .line2 { color: orange; }
+      .char3,
+      .word3,
+      .line3 { color: yellow; }
+      .char4,
+      .line4 { color: blue; }
+      .char5 { color: green; }
+      .char6 { color: indigo; }
+      .char7 { color: violet; }
+
+      .container2 {
+        width: 84%;
+        margin:0 auto;
+        max-width:1140px;
+      }
+      header {
+        width: 100%;
+        margin:0px auto;
+      }
+
+      h1#fittext1 {
+        background: rgba(0,0,0,0.2);
+        text-align: center;
+        color:#fff;
+        font: 95px/1 "Impact";
+        text-transform: uppercase;
+        display: block;
+        text-shadow:#253e45 -1px 1px 0,
+        #253e45 -2px 2px 0,
+        #d45848 -3px 3px 0,
+        #d45848 -4px 4px 0;
+        margin: 5% auto 5%;
+      }
+      h1#fittext2 {
+        background: rgba(0,0,0,0.2);
+        text-align: center;
+        color:#fff;
+        font: 95px/1 "Impact";
+        text-transform: uppercase;
+        display: block;
+        text-shadow:#253e45 -1px 1px 0,
+        #253e45 -2px 2px 0,
+        #d45848 -3px 3px 0,
+        #d45848 -4px 4px 0;
+        margin: 5% auto 5%;
+      }
+      h1#fittext3 {
+        background: rgba(0,0,0,0.2);
+        text-align: center;
+        color:#fff;
+        font: 95px/1 "Impact";
+        text-transform: uppercase;
+        display: block;
+        text-shadow:#253e45 -1px 1px 0,
+        #253e45 -2px 2px 0,
+        #d45848 -3px 3px 0,
+        #d45848 -4px 4px 0;
+        margin: 5% auto 5%;
+      }
+      .highcharts-figure,
+      .highcharts-data-table table {
+        min-width: 360px;
+        max-width: 800px;
+        margin: 1em auto;
+      }
+
+      .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+      }
+
+      .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table td,
+      .highcharts-data-table th,
+      .highcharts-data-table caption {
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table thead tr,
+      .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+
+      .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+      }
+    </style>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="./jQueryLibraries/Lettering.js/jquery.lettering.js"></script>
+    <script src="./jQueryLibraries/jquery.avgrund.js/jquery.avgrund.js"></script>
+    <script src="./jQueryLibraries/FitText.js/jquery.fittext.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </head>
+  <body>
+    <h1>jQuery Libraries</h1>
+    <p>Search on the internet for some cool jQuery libraries.  http://tutorialzine.com/2013/04/50-amazing-jquery-plugins/ or http://designshack.net/articles/javascript/40-awes... could be a good start although you can just google as well.
+
+    When you're building your project, it's helpful that you understand what other jQuery/JavaScript libraries are out there. Get familiar with some cool JavaScript libraries and see if you can make something cool! Later in the bootcamp, you'll learn more about JavaScript and you'll know how to use more advanced JavaScript libraries. For now, try to get yourself familiar with some cool JavaScript libraries as well as what these will allow you to do. We're seeing that more companies are looking for developers who understand how to use JavaScript as well as those who know how to quickly integrate other JavaScript libraries. This is your chance to get into the world of JavaScript. :)</p>
+    <div class="container">
+    <h2>Avgrund.js</h2>
+    <p>Avgrund is a jQuery plugin for modal boxes and popups. It uses interesting concept showing depth between popup and page.</p>
+    <a href="#" id="show" class="button left"><button class="btn-primary">Show it</button></a>
+    </div>
+
+    <h2 class="fancy_title">Lettering</h2>
+    <p>"We developed a lightweight, easy to use Javascript span injector for radical Web Typography, we're calling it "lettering-jay-ess", and we're releasing it today for free over on Github."</p>
+    <div id="demo1" class="demo">
+    <h1>Rainbow</h1>
+    </div>
+    <div id="demo2" class="demo">
+    <h1>Hi, Multi Color</h1>
+    </div>
+    <div id="demo3" class="demo">
+    <p>This is an amazing<br/> Revolution in Typography. <br/> The possibilities are endless: <br/> Coloring, Vertical spacing, and Kerning.</p>
+    </div>
+    <div id="demo4" class="demo">
+    <h1>Double Rainbow</h1>
+    </div>
+    <div id="demo5" class="demo">
+    <h1>WOOOoo!</h1>
+    </div>
+
+    <h2>Fit Text</h2>
+    <p><a href="https://github.com/davatron5000/FitText.js">Fittext.js</a> is a jQuery plugin for inflating web type. It automatically scales the text of an element to take up the full width of its container. This makes the layout responsive and looking sharp on any device.</p>
+
+    <div class="container2">
+    <header>
+    <h1 id="fittext1">Squeeze with FitText</h1>
+    <h1 id="fittext2">Squeeze with FitText</h1>
+    <h1 id="fittext3">Squeeze with FitText</h1>
+    </header>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+    Basic line chart showing trends in a dataset. This chart includes the
+    <code>series-label</code> module, which adds a label to each line for
+    enhanced readability.
+    </p>
+    </figure>
+
+    <script>
+      $('#show').avgrund({
+        height: 200,
+        holderClass: 'custom',
+        showClose: true,
+        showCloseText: 'close',
+        onBlurContainer: '.container',
+        template: '<p>Clone the necessary files from ' + '<a href="https://github.com/voronianski/jquery.avgrund.js">"Here"</a>' + ', into your project and attach the style and css tags for Avgrund library</p><br>' +
+        '<div>' +
+        '<h3>Creators Social Media</h3>' +
+        '<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a><br>' +
+        '<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>' +
+        '</div>'
+      });
+      $('.btn-primary').hover(function(){
+      $(this).css('cursor', 'pointer');
+      });
+      $(".fancy_title").lettering();
+      $("#demo1 h1").lettering();
+      $("#demo2 h1").lettering('words');
+      $("#demo3 p").lettering('lines');
+      $("#demo4 h1").lettering('words').children("span").lettering();
+      $("#demo5 h1").lettering().children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
+
+      $("#fittext1").fitText();
+      $("#fittext2").fitText(1.2);
+      $("#fittext3").fitText(1.1, { minFontSize: '50px', maxFontSize: '75px' });
+
+      Highcharts.chart('container', {
+
+        title: {
+          text: 'Solar Employment Growth by Sector, 2010-2016'
+        },
+
+        subtitle: {
+          text: 'Source: thesolarfoundation.com'
+        },
+
+        yAxis: {
+          title: {
+            text: 'Number of Employees'
+          }
+        },
+
+        xAxis: {
+          accessibility: {
+            rangeDescription: 'Range: 2010 to 2017'
+          }
+        },
+
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+          series: {
+            label: {
+              connectorAllowed: false
+            },
+            pointStart: 2010
+          }
+        },
+
+        series: [{
+          name: 'Installation',
+          data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+          }, {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+          }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+          }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+          }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        }],
+
+        responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+Likes
+
+Objectives:
+
+Gain familiarity with designing ERDs
+Look at the wireframe below and create an ERD diagram. Then look at the video afterwards and compare your ERD diagram with the demo.
+
+Step 1: Look at the wireframe and determine what database tables you need to be able to come up with the app.
+
+Step 2: Set up the relationships and make sure you rename your foreign keys to be singular.

@@ -1,0 +1,8 @@
+Food Reviews
+
+Objectives:
+
+Gain familiarity with designing ERDs
+Look at the wireframe below and create an ERD diagram. Then look at the video afterwards and compare your ERD diagram with the demo.
+
+N.B.: It is reasonable to include a 'rating' or 'num_stars' column in the reviews table, of type tinyint(1). 
