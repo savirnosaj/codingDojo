@@ -1,0 +1,52 @@
+Assignment Friendships
+
+Objectives:
+a. Practice creating databases
+b. Practive SQL queries and self joins
+
+Your results should look like below:
+
+first_name|last_name|friend_first_name|friend_last_name
+-------------------------------------------------------
+  Amy     |  Giver  |  Eli            |  Byers
+  Amy     |  Giver  |  Big            |  Bird
+  Amy     |  Giver  |  Kermit         |  The Frog
+  Eli     |  Byers  |  Kermit         |  The Frog
+  Eli     |  Byers  |  Marky          |  Mark
+  Marky   |  Mark   |  Big            |  Bird
+
+-> SELECT users.first_name, users.last_name, users2.first_name AS friend_first_name, users2.last_name AS friend_last_name FROM users JOIN friendships ON friendships.user_id = users.id JOIN users AS users2 ON friendships.friend_id = users2.id;
+
+Additional Excercise:
+--------------------
+
+1. Return all users who are friends with Kermit, make sure their names are displayed in results.
+----
+-> SELECT users.first_name, users.last_name, users2.first_name AS friend_first_name, users2.last_name AS friend_last_name FROM users JOIN friendships ON friendships.user_id = users.id JOIN users AS users2 ON friendships.friend_id = users2.id WHERE friendships.friend_id = 4;
+
+2. Return the count of all friendships
+----
+-> SELECT COUNT(users.first_name) AS number_of_friendships FROM users JOIN friendships ON friendships.user_id = users.id JOIN users AS users2 ON friendships.friend_id = users2.id;
+
+3. Find out who has the most friends and return the count of their friends.
+----
+-> SELECT users.first_name, users.last_name, COUNT(friendships.friend_id) AS winner_for_most_friends_goes_to FROM users LEFT JOIN friendships ON friendships.user_id = users.id JOIN users AS users2 ON friendships.friend_id = users2.id GROUP BY users.first_name ORDER BY users.first_name ASC LIMIT 1;
+
+4. Create a new user and make them friends with Eli Byers, Kermit The Frog, and Marky Mark
+----
+-> INSERT INTO users (id, first_name, last_name, created_at, updated_at) VALUES (7, 'Jesus', 'Christ', NOW(), NOW());
+-> INSERT INTO friendships (id, user_id, friend_id, created_at, updated_at) VALUES (7, 7, 2, NOW(), NOW());
+-> INSERT INTO friendships (id, user_id, friend_id, created_at, updated_at) VALUES (8, 7, 4, NOW(), NOW());
+-> INSERT INTO friendships (id, user_id, friend_id, created_at, updated_at) VALUES (9, 7, 5, NOW(), NOW());
+
+5. Return the friends of Eli in alphabetical order
+----
+-> SELECT users.first_name AS friends_of_Eli, users.last_name FROM users JOIN friendships ON friendships.user_id = users.id WHERE friendships.friend_id = 2 ORDER BY users.first_name ASC;
+
+6. Remove Marky Mark from Eliâ€™s friends.
+----
+-> DELETE FROM friendships WHERE friendships.user_id = 2 AND friendships.friend_id = 5;
+
+7. Return all friendships, displaying just the first and last name of both friends
+----
+-> SELECT CONCAT_WS(' ', users.first_name, users.last_name, users2.first_name, users2.last_name) AS first_and_last_name_of_both_friends FROM users JOIN friendships ON friendships.user_id = users.id JOIN users AS users2 ON friendships.friend_id = users2.id;

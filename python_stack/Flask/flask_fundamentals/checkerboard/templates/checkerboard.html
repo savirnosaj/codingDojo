@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Checkerboard</title>
+        <style>
+            .space {padding: 65px;}
+            .red {background-color: #ff0000;}
+            .black {background-color: #000;}
+        </style>
+    </head>
+    <body>
+        <table>
+            {% for x in range(hor) %}
+                {% if(x % 2 == 0) %}
+                    <tr>
+                        {% for y in range(ver) %}
+                            {% if(y % 2 == 0) %}
+                                <td class="space red"></td>
+                            {% endif %}
+                            {% if(y % 2 == 1) %}
+                                <td class="space black"></td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+                {% if(x % 2 == 1) %}
+                <tr>
+                    {% for y in range(ver) %}
+                        {% if(y % 2 == 0) %}
+                            <td class="space black"></td>
+                        {% endif %}
+                        {% if(y % 2 == 1) %}
+                            <td class="space red"></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+To Do: MySQL Workbench Setup
+Use MySQLWorkbench to connect to your localhost.
+
+1. To connect to a specific database, run USE [databasename] in the query box.
+-> USE twitter;
+
+Try the queries that you would need to make a CRUD application
+(create, read, update, delete):
+
+2. INSERT -
+-> INSERT INTO users (id, first_name, last_name, handle, birthday, created_at, updated_at) VALUES (6, 'Jason', 'Rivas', 'savirnosaj', '1998-06-30', NOW(), NOW());
+
+3. SELECT -
+-> SELECT first_name, handle, birthday FROM users WHERE first_name LIKE 'J%';
+
+4. UPDATE -
+-> UPDATE users SET handle = 'iKnowSQL', updated_at = NOW() WHERE first_name = 'Jason' AND last_name = 'Rivas';
+
+5. DELETE -
+-> DELETE FROM users WHERE birthday > '1998-00-00';

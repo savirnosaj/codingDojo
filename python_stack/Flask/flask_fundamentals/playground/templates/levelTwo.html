@@ -1,0 +1,16 @@
+<head>
+    <style>
+        h1 {text-align:center;margin-top: 20px;}
+        .container {padding: 5px;text-align: center;}
+        .box {padding: 100px;background-color: #addae6;display: inline-block;border: 5px solid #000}
+        .box:not(:last-child) {margin-right: 25px;}
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div class="container">
+        {% for count in range(num) %}
+            <div class="box"></div>
+        {% endfor %}
+    </div>
+</body>
