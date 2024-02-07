@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Survey Information</title>
+        <style>
+            /* * */
+            .container {padding:15px;width: 425px;margin: 0 auto;position: relative;}
+            .survey-Info {background-color: #778899;width: 100%;padding: 10px;}
+            .labels {display: inline-block;padding: 15px;width: 42%;}
+            .label-info {display: inline-block;padding: 15px;width: 42%;}
+            /* STYLE */
+            h1 {text-decoration: underline;}
+            .white {color: #fff;font-weight: bold;}
+            .martop {margin-top: 15px;}
+            .block {display: block;}
+            .cap {text-transform: capitalize;}
+            .btn-style {padding: 5px;background-color: #6495ed;border: 1px solid #6495ed;border-radius: 5px;cursor: pointer;right:15px;position: absolute;}
+            .btn-style:hover {background-color: #dc143c;border: 1px solid #dc143c}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="survey-Info white">
+                <h1>Submitted Info</h1>
+                <div class="labels">
+                    <p>Full Name:</p>
+                    <p>Dojo Location:</p>
+                    <p>Favorite Language:</p>
+                    <p>Comment:</p>
+                </div>
+                <div class="label-info">
+                    <p>{{ request.form['name'] }}</p>
+                    <p class="cap">{{ request.form['location'] }}</p>
+                    <p class="cap">{{ request.form['language'] }}</p>
+                    <p>{{ request.form['comment'] }}</p>
+                </div>
+            </div>
+            <a href="/danger">
+                <button class="btn-style white martop">Go Back</button>
+            </a>
+        </div>
+    </body>
+</html>

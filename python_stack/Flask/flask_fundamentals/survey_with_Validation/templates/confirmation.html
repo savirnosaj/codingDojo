@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Confirmation</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+
+            <div class="container result_maxwidth">
+
+                <h1>Submitted Info</h1>
+
+                <div class="f_label">
+
+                    <p>Name:</p>
+                    <p>Location:</p>
+                    <p>Language:</p>
+                    
+                </div>
+                <div class="f_input">
+
+                    <p><span class="f-info">{{session['name']}}</span></p>
+                    <p><span class="f-info">{{session['location']}}</span></p>
+                    <p><span class="f-info">{{session['language']}}</span></p>
+                    
+                </div>
+                <p>Comment:</p>
+                <p><span class="f-info">{{session['comment']}}</span></p>
+                <a href="/reset">
+                    <button class="btn-style3">Go Back</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

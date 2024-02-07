@@ -6,7 +6,7 @@
 # Create a python file called for_loop_basic1.py that performs the following tasks:
 
 # 1. Basic - Print all the numbers/integers from 0 to 150
-#for count in range(0,151):
+# for count in range(0,151):
 #    print(count)
 
 # 2. Mulitples of Five - Print all the multiples of 5 to 1,000
@@ -72,8 +72,8 @@
 # range only works with integers, not arrays
 
 # 3.
-list = [3,5,1,2]
-for i in range(len(list)):
-    print(i)
+# list = [3,5,1,2]
+# for i in range(len(list)):
+#     print(i)
 
 # Prediction: 0, 1, 2, 3

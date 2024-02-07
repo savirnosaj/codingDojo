@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>Next Steps</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="main bckgrd_1">
+                <h1 class="font-white mar-left_high">Next Steps</h1>
+
+                {% with f_message = get_flashed_messages(with_categories=true) %}
+                    {% if f_message %}
+                        {% for category, message in f_message %}
+                            <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+                <div class="form_container bckgrd_2">
+                    
+                    <div class="container next_form alignLeft">
+                    <h3 class="font-white pad-left_high">Customize Your Profile</h3>
+
+                        <form action="/userInfo" method="POST">
+                
+                            <div class="row pad-left_high borderUnderline">
+
+                                <label class="font-white">Birthday:</label>
+                                <select name="bd-month">
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select name="bd-day">
+                                    {% for count in range(31, 0, -1) %}
+                                        <option value="{{ count }}">{{ count }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select name="bd-year">
+                                    {% for count in range(2023, 1922, -1) %}
+                                        <option value="{{ count }}">{{ count }}</option>
+                                    {% endfor %}
+                                </select>
+                
+                            </div>
+                
+                            <div class="row pad-left_high borderUnderline">
+
+                                <label class="font-white">Favorite Lanuage:</label>
+                                
+                                <div class="form_label">
+                                    <label>Python</label>
+                                    <input name="favLang" value="Python" type="checkbox">
+                                </div>
+
+                                <div class="form_input">
+                                    <label>Javascript</label>
+                                    <input name="favLang" value="Javascript" type="checkbox">
+                                </div>
+                
+                            </div>
+                
+                            <div class="row pad-left_high borderUnderline">
+
+                                <label class="font-white">Gender:</label>
+                                    
+                                <div class="form_label">
+                                    <label for="male">Male</label>
+                                    <input name="gender" id="male" value="Male" type="radio">
+                                </div>
+
+                                <div class="form_input">
+                                    <label for="female">Female</label>
+                                    <input name="gender" id="female" value="Female" type="radio">
+                                </div>
+                
+                            </div>
+                
+                            <input type="submit" value="Submit" class="form-btn mar-left_high">
+                
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

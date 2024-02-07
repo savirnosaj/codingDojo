@@ -1,0 +1,10 @@
+Error 1 -
+-----------
+Something went wrong (1146, "Table 'world.users' doesn't exist")
+
+Analysis for 1:
+------------------
+In our 'server.py' file, in the for-loop (line 12) we're wanting to print * rows of data from the 'users' table. The problem is we inputed 'world' for the targeted database in our 'mysqlconnection.py (line 10), which has no tables titles 'users'.
+Fix for 1:
+------------------
+Supply the correct db to pymysql.connect()

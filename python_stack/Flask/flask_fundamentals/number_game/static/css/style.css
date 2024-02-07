@@ -1,0 +1,11 @@
+.container {width: 100%;height: 100%;position: relative;}
+#game {position: absolute;left: 50%;top: 50%;margin-left: -250px;margin-top: -155px;}
+.guess_box-text {text-align: center;}
+#guess_box {padding: 15px;text-align: center;width: 120px;margin: 0 auto;color: #fff;border: 3px solid #000;}
+form {text-align: center;}
+.btn-style {margin-top: 20px;padding: 10px;background-color: #1e90ff;color: #fff;border-radius: 5px;border: 0px solid #1e90ff;cursor: pointer;}
+.btn-style:hover {background-color: #6a5acd;border: 0px solid #6a5acd;}
+.input-style {padding: 5px;text-align: center;width: 125px;}
+.bkg-red {background-color: #ff0000;}
+.bkg-green {background-color: #008000;}
+.blank {display: none;}

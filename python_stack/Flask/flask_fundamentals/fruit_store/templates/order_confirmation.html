@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Order Confirmation</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <style>
+            .width {
+                width: 325px;
+            }
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Thank You For Your Order!</h1>
+            <p>We ordered <span class="bold">{{total_items}}</span> items for you and charged your student account on <span class="bold">{{date_charged}}</span></p><br>
+
+            <h3>You've Ordered:</h3>
+            <div class="row form_1 border-LR">
+                <div class="label border-R width">
+                    <p class="bold">Fruit Name</p>
+                </div>
+                <div class="input">
+                    <p class="bold">Quantity</p>
+                </div>
+            </div>
+
+            <div class="row form_2 border-LR">
+                <div class="label border-R width">
+                    <label for="strawberry">Strawberry:</label>
+                </div>
+                <div class="input">
+                    <p>{{ request.form['strawberry'] }}</p>
+                </div>
+            </div>
+
+            <div class="row form_3 border-LR">
+                <div class="label border-R width">
+                    <label for="raspberry">Raspberry:</label>
+                </div>
+                <div class="input">
+                    <p>{{ request.form['raspberry'] }}</p>
+                </div>
+            </div>
+
+            <div class="row form_2 border-LR border-B">
+                <div class="label border-R width">
+                    <label for="strawberry">Apple:</label>
+                </div>
+                <div class="input">
+                    <p>{{ request.form['apple'] }}</p>
+                </div>
+            </div><br>
+
+            <p class="underline bold">Your Information</p><br>
+
+            <div class="row">
+                <div class="label">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="input">
+                    <p class="bold">{{request.form['name']}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label">
+                    <label for="name">Student ID:</label>
+                </div>
+                <div class="input">
+                    <p class="bold">{{request.form['student_id']}}</p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

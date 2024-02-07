@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>All Users</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <h1>Success Page</h1>
+
+        {% with f_message = get_flashed_messages(with_categories=true) %}
+            {% if f_message %}
+                {% for category, message in f_message %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Email Entered:</th>
+                    <th>Date Joined:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user['email'] }}</td>
+                        <td>{{ user['created_at'] }}</td>
+                        <td>
+                            <form class="delete_form" action="/delete" method="POST">
+                                <input name="userID" type="hidden" value="{{ user['id'] }}">
+                                <input name="userEMAIL" type="hidden" value="{{ user['email'] }}">
+                                <input class="delete_btn" value="Delete" type="submit">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/">
+            <button class="add_btn">Add User</button>
+        </a>
+
+    </body>
+</html>

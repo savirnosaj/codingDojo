@@ -1,0 +1,184 @@
+<html>
+    <head>
+        <title>Survey with Validation</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            
+            <div class="container">
+
+                <h1>Dojo Survey with Validations</h1>
+
+                <form action="/process" method="post">
+
+                    <div class="row">
+
+                        {% with f_mesesages = get_flashed_messages() %}
+                            {% if f_mesesages %}
+                                {% for message in f_mesesages %}
+                                    {% if message == "Name field can't be empty" %}
+                                        <p class="t_red">{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="f_label">
+
+                            <label for="survey_name">Full Name:</label>
+
+                        </div>
+
+                        <div class="f_input">
+
+                            <input type="text" name="survey_name" value="{{session['name']}}"><br>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        {% with f_mesesages = get_flashed_messages() %}
+                            {% if f_mesesages %}
+                                {% for message in f_mesesages %}
+                                    {% if message == "Location field can't be empty" %}
+                                        <p class="t_red">{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="f_label">
+
+                            <label for="survey_location">Dojo Location:</label>
+
+                        </div>
+
+                        <div class="f_input">
+
+                            <select name="survey_location">
+                                {% if 'location' in session %}
+                                    {% if session['location'] == 'Dallas' %}
+                                        <option value="{{ session['location'] }}" class="t_green">{{ session['location'] }}</option>
+                                        <option value="Los Angeles">Los Angeles</option>
+                                        <option value="San Jose">San Jose</option>
+                                        <option value="Seattle">Seattle</option>
+                                    {% elif session['location'] == 'Los Angeles' %}
+                                        <option value="{{ session['location'] }}" class="t_green">{{ session['location'] }}</option>
+                                        <option value="Dallas">Dallas</option>
+                                        <option value="San Jose">San Jose</option>
+                                        <option value="Seattle">Seattle</option>
+                                    {% elif session['location'] == 'San Jose' %}
+                                        <option value="{{ session['location'] }}" class="t_green">{{ session['location'] }}</option>
+                                        <option value="Dallas">Dallas</option>
+                                        <option value="Los Angeles">Los Angeles</option>
+                                        <option value="Seattle">Seattle</option>
+                                    {% elif session['location'] == 'Seattle' %}
+                                        <option value="{{ session['location'] }}" class="t_green">{{ session['location'] }}</option>
+                                        <option value="Dallas">Dallas</option>
+                                        <option value="Los Angeles">Los Angeles</option>
+                                        <option value="San Jose">San Jose</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value="" class="t_red">-- Please Select One --</option>
+                                    <option value="Dallas">Dallas</option>
+                                    <option value="Los Angeles">Los Angeles</option>
+                                    <option value="San Jose">San Jose</option>
+                                    <option value="Seattle">Seattle</option>
+                                {% endif %}
+                            </select><br>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        {% with f_mesesages = get_flashed_messages() %}
+                            {% if f_mesesages %}
+                                {% for message in f_mesesages %}
+                                    {% if message == "Language field can't be empty" %}
+                                        <p class="t_red">{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <div class="f_label">
+
+                            <label for="survey_language">Favorite Language:</label>
+
+                        </div>
+
+                        <div class="f_input">
+
+                            <select name="survey_language">
+                                {% if 'language' in session %}
+                                    {% if session['language'] == 'C#' %}
+                                        <option value="{{ session['language'] }}" class="t_green">{{ session['language'] }}</option>
+                                        <option value="Javascript">Javascript</option>
+                                        <option value="Python">Python</option>
+                                    {% elif session['language'] == 'Javascript' %}
+                                        <option value="{{ session['language'] }}" class="t_green">{{ session['language'] }}</option>
+                                        <option value="C#">C#</option>
+                                        <option value="Python">Python</option>
+                                    {% elif session['language'] == 'Python' %}
+                                        <option value="{{ session['language'] }}" class="t_green">{{ session['language'] }}</option>
+                                        <option value="C#">C#</option>
+                                        <option value="Javascript">Javascript</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value="" class="t_red">-- Please Select One --</option>
+                                    <option value="C#">C#</option>
+                                    <option value="Javascript">Javascript</option>
+                                    <option value="Python">Python</option>
+                                {% endif %}
+                            </select><br>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        {% with f_mesesages = get_flashed_messages() %}
+                            {% if f_mesesages %}
+                                {% for message in f_mesesages %}
+                                    {% if message == "Comment field can't be empty" %}
+                                        <p class="t_red">{{ message }}</p>
+                                    {% elif message == "Comment field can't have more than 120 characters" %}
+                                        <p class="t_red">{{ message }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <div class="f_label">
+
+                            <label for="survey_comment">Comment (optional):</label>
+
+                        </div><br>
+
+                        <div class="f_input full_w">
+
+                            <textarea name="survey_comment" class="full_w textarea_maxwidth textarea_maxheight">{{session['comment']}}</textarea><br>
+
+                        </div>
+
+                    </div>
+        
+                    <input type="submit" value="Submit" class="btn-style">
+        
+                </form>
+                <a href="/reset">
+                    <button class="btn-style2">Reset</button>
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </body>
+</html>

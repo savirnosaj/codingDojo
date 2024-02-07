@@ -1,0 +1,100 @@
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.container {
+    left: 50%;
+    top: 35%;
+    position: absolute;
+    margin-left: -195px;
+    margin-top: -110px;
+    border: 5px solid #000;
+    padding: 1em;
+}
+form {
+    margin: 0;
+}
+.f-info {
+    color: blue;
+    text-transform: capitalize;
+}
+option {
+    padding: 1em;
+}
+.t_red {
+    color: #ff0000;
+    margin-bottom: 5px;
+}
+.t_yellow {
+    color: #ffff00;
+}
+.t_green {
+    color: #008000
+}
+.btn-style {
+    padding: 4px;
+    margin-top: 5px;
+    background-color: #4169e1;
+    color: #fff;
+    border: 0px solid #4169e1;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+}
+.btn-style:hover {
+    background-color: #000080;
+    border: 0px solid #000080;
+}
+.btn-style2 {
+    padding: 4px;
+    margin-top: 5px;
+    background-color: #ff0000;
+    color: #fff;
+    border: 0px solid #ff0000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-style2:hover {
+    background-color: #b22222;
+    border: 0px solid #b22222;
+}
+.btn-style3 {
+    padding: 4px;
+    margin-top: 5px;
+    background-color: #7b68ee;
+    color: #fff;
+    border: 0px solid #7b68ee;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-style3:hover {
+    background-color: #90ee90;
+    border: 0px solid #90ee90;
+}
+.row {
+    width: 100%;
+    padding: 5px;
+}
+.f_label {
+    display: inline-block;
+    width: 9em;
+}
+.f_input {
+    display: inline-block;
+}
+.full_w {
+    width: 100%;
+}
+.result_maxwidth {
+    max-width: 450px;
+}
+.textarea_maxwidth {
+    max-width: 390px;
+}
+.textarea_maxheight {
+    height: 100px;
+    max-height: 150px;
+}

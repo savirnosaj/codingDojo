@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="main alignCenter bckgrd_1">
+
+                <div class="container alignCenter bckgrd_2 paddingSmall">
+
+                    {% if 'reg_fName' in session %}
+                        <h1 class="font-white">Welcome, {{ session['reg_fName'] }}!</h1>
+                    {% elif 'log_fName' in session %}
+                        <h1 class="font-white">Welcome, {{ session['log_fName'] }}!</h1>
+                    {% endif %}
+            
+                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                        {% if f_message %}
+                            {% for category, message in f_message %}
+                                <p class="{{ category }}">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+            
+                    <a href="/logout_user">
+                        <button class="logout_btn">Logout</button>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,108 @@
+/* STYLE */
+h1 {
+    padding-left: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    padding: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.block {
+    display: block;
+}
+
+.form_3 {
+    background-color: #a9a9a9;
+}
+
+.form_2 {
+    background-color: #d3d3d3;
+}
+
+.form_1 {
+    background-color: #778899;
+}
+
+.margin-p {
+    margin-bottom: 20px;
+}
+
+.btn-style {
+    padding: 7px 10px;
+    background-color: #dc143c;
+    border-radius: 5px;
+    border: 0 solid #fff;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+}
+
+.btn-style:hover {
+    background-color: #6a5acd;
+}
+
+/* ENDSTYLE */
+
+body {
+    background-color: #000;
+}
+
+.container {
+    padding: 15px 15px 30px 15px;
+    margin: 0 auto;
+    width: 725px;
+    background-color: #fff;
+}
+
+.border-LR {
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.border-B {
+    border-bottom: 2px solid #000;
+}
+
+.border-R {
+    border-right: 2px solid #000;
+}
+
+.form_info {
+    display: inline-block;
+    width: 350px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.dojo_message {
+    display: inline-block;
+    width: 250px;
+    vertical-align: top;
+    background-color: #6a5acd;
+    padding: 25px;
+}
+
+.label {
+    display: inline-block;
+    width: 120px;
+    padding: 7px;
+}
+
+.input {
+    display: inline-block;
+    padding: 7px;
+}

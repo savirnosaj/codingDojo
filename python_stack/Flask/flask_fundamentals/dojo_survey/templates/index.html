@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Dojo Survey</title>
+        <style>
+            /* * */
+            body {background-color: #000;}
+            .container {padding:15px;width: 425px;margin: 0 auto;}
+            /* STYLE */
+            .white {color: #fff;font-weight: bold;}
+            .martop {margin-top: 15px;}
+            .block {display: block;}
+            /* ENDSTYLE */
+
+            /* FORM */
+            .form {padding: 20px 20px 60px 20px;background-color: #778899;width: 100%;position: relative;}
+            .form-label {display: inline-block;width: 36%;}
+            .form-input {display: inline-block;width: 63%;}
+            label {display: block;}
+            .label-style:not(:last-child) {margin-bottom: 15px;}
+            .input-style:not(:last-child) {margin-bottom: 15px;}
+            .btn-style {padding: 5px;background-color: #6495ed;border: 1px solid #6495ed;border-radius: 5px;cursor: pointer;right:15px;position: absolute;}
+            .btn-style:hover {background-color: #dc143c;border: 1px solid #dc143c}
+            .label-style {padding: 8px;}
+            .input-style {padding: 9px;width: 100%;}
+            /* ENDFORM */
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form class="form" action="/form-submitted" method="POST">
+                <div class="form-label">
+                    <label for="name" class="label-style white">Your Name:</label>
+                    <label for="location" class="label-style white">Dojo Location:</label>
+                    <label for="language" class="label-style white">Favorite Language:</label>
+                </div>
+                <div class="form-input">
+                    <input name="name" class="input-style" type="text">
+                    <select name="location" class="input-style">
+                        <option value="berkley">Berkley</option>
+                        <option value="boise">Boise</option>
+                        <option value="chicago">Chicago</option>
+                        <option value="dallas">Dallas</option>
+                        <option value="los-angeles">Los Angeles</option>
+                        <option value="san-jose">San Jose</option>
+                        <option value="seattle">Seattle</option>
+                        <option value="tulsa">Tulsa</option>
+                        <option value="virgina">Virgina</option>
+                    </select>
+                    <select name="language" class="input-style">
+                        <option value="python">Python</option>
+                        <option value="javascript">Javascript</option>
+                        <option value="c#">C#</option>
+                        <option value="java">Java</option>
+                    </select>
+                </div>
+                <label for="comment" class="white martop">Comment (optional):</label>
+                <textarea name="comment" class="input-style block" type="text"></textarea>
+                <button class="btn-style white martop" type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

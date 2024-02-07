@@ -1,0 +1,57 @@
+<html>
+
+    <head>
+        <title>Friends Create Read</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="container">
+
+                <div class="content">
+
+                    <h1>Here Are My Friends</h1><br>
+            
+                    <table>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Occupation</th>
+                        </tr>
+            
+                        {% for friend in friends %}
+                            <tr>
+                                <td>{{friend.first_name}}</td>
+                                <td>{{friend.last_name}}</td>
+                                <td>{{friend.occupation}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+            
+            
+                    <h1>Add a Friend</h1>
+            
+                    <form action="/create_friend" method="POST">
+            
+                        <label for="first_name">First Name:</label>
+                        <input name="first_name" type="text"><br>
+            
+                        <label for="last_name">Last Name:</label>
+                        <input name="last_name" type="text"><br>
+            
+                        <label for="occupation">Occupation:</label>
+                        <input name="occupation" type="text"><br>
+            
+                        <input type="submit" value="Add">
+            
+                    </form>
+    
+                </div>
+                
+            </div>
+        </div>
+
+    </body>
+</html>

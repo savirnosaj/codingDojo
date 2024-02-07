@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>Leads and Clients</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- JS -->
+        <script>
+            window.onload = function () {
+
+                var client_names = []; /* These arrays are necassary because it's difficult querying the client_data objects returned from script. */
+                var client_site_leads = [];
+
+                {% for info in client_info %}
+                    client_names.push("{{ info[0]['first_name'] }}")
+                    client_site_leads.push("{{ info[1] }}")
+                {% endfor %}
+                console.log(client_names);
+                console.log(client_site_leads);
+
+                var options = {
+                    title: {
+                        text: "Customer and Number of Leads"
+                    },
+                    {% if 'chart_month' in session %}
+                        subtitles: [{
+                            text: "As of {{ session['chart_month'] }}, {{ session['updated_year'] }}"
+                        }],
+                    {% else %}
+                        subtitles: [{
+                            text: "All leads per Client since January, 2011"
+                        }],
+                    {% endif %}
+                    animationEnabled: true,
+                    data: [{
+                        type: "pie",
+                        startAngle: 40,
+                        toolTipContent: "<b>{label}</b>: {y}",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+                        indexLabel: "{label} - {y}",
+                        dataPoints: []
+                    }]
+                };
+                
+                $("#chartContainer").CanvasJSChart(options);
+
+                function add_client_info(cn, ncsl){
+                    var chart = $("#chartContainer").CanvasJSChart();
+                    var length = chart.options.data[0].dataPoints.length;
+                    chart.options.data[0].dataPoints.push({ y: ncsl, label: cn });
+                    chart.render();
+                }
+
+                for(var i = 0; i < client_site_leads.length; i++){
+                    add_client_info(client_names[i], client_site_leads[i])
+                }
+                /*console.log(options.data[0].dataPoints.length);*/
+
+            }
+        </script>
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="container">
+
+                <form action="/update_time" method="POST">
+    
+                    <label for="tm_month"><i class="fa fa-calendar"></i></label>
+                    <select name="tm_month">
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+    
+                    <label for="tm_year"><i class="fa fa-calendar"></i></label>
+                    <select name="tm_year">
+                        {% for count in range(2011, 2014) %}
+    
+                            <option value="{{ count }}">{{ count }}</option>
+    
+                        {% endfor %}
+                    </select>
+    
+                    <input type="submit" value="Submit">
+    
+                </form>
+        
+                <table>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Number of Leads</th>
+                    </tr>
+        
+                    {% for client, client_lead in client_lead_data %}
+                        <tr>
+                            <td>{{ client.first_name }} {{ client.last_name }}</td>
+                            <td>{{ client_lead }}</td>
+                        </tr>
+                    {% endfor %}
+                </table><br>
+    
+                <a href="/reset">
+                    <button>Reset</button>
+                </a>
+
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+            </div>
+        </div>
+
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+
+    </body>
+</html>

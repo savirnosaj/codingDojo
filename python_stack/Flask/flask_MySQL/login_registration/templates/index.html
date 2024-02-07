@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <title>Login and Registration</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="main bckgrd_1">
+                <h1 class="font-white">Login Registration</h1>
+
+                <div class="form_container bckgrd_2">
+
+                    <div class="container alignLeft">
+                        <div class="regDiv">
+                            <h2 class="font-white">Register Here</h2>
+                            
+                            <form action="/register_user" method="POST">
+                                
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "First Name Field Can't Be Empty" or message == 'First Name Must Be at Least 2 Characters Long' or message == "First Name Can't Contain Numbers" %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="fName" class="font-white">First Name:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="fName" type="text" value="{{ session['reg_fName'] }}"><br>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Last Name Field Can't Be Empty" or message == 'Last Name Must Be at Least 2 Characters Long' or message == "Last Name Can't Contain Numbers" %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="lName" class="font-white">Last Name:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="lName" type="text" value="{{ session['reg_lName'] }}"><br>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Email Field Can't Be Empty" or message == 'Invalid Email Address Entered' or message == 'This Email Is Already Registered' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="email" class="font-white">Email:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="email" type="text" value="{{ session['reg_email'] }}"><br>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Password Field Can't Be Empty" or message == 'Password Must Be at Least 8 Characters' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% elif message == 'Password Must Contain at Least One Number' or message == 'Password Must Contain at Least One Letter' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% elif message == 'Password Must Contain at Least One Uppercase Letter' or message == 'Password Must Contain at Least One Special Character' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% elif message == 'Password Must Contain at Least One Number/Special Character' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="passwd" class="font-white">Password:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="passwd" type="text"><br>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Confirm Password Field Can't Be Empty" or message == "Passwords Didn't Match" %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="confirm_Pass" class="font-white">Confirm Password:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="confirm_Pass" type="text"><br>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <input type="submit" value="Submit" class="form-btn">
+            
+                            </form>
+
+                        </div>
+                    </div>
+        
+                    <div class="container alignLeft">
+                        <div class="logDiv">
+                            <h2 class="font-white">Login Here</h2>
+    
+                            <form action="/login_user" method="POST">
+
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Enter Email Address" or message == 'Invalid Email Address' or message == "This Email Does Not Exists" %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="email" class="font-white">Email:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="email" type="text" value="{{ session['log_email'] }}"><br>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+
+                                    {% with f_message = get_flashed_messages(with_categories=true) %}
+                                        {% if f_message %}
+                                            {% for category, message in f_message %}
+                                                {% if message == "Enter Password" or message == 'You Entered The Wrong Password' %}
+                                                    <p class="{{ category }}">{{ message }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <div class="form_label">
+                                        <label for="passwd" class="font-white">Password:</label>
+                                    </div>
+    
+                                    <div class="form_input">
+                                        <input name="passwd" type="text"><br>
+                                    </div>
+                                    
+                                </div>
+
+                                <input type="submit" value="Submit" class="form-btn">
+
+                                {% with f_message = get_flashed_messages(with_categories=true) %}
+                                    {% if f_message %}
+                                        {% for category, message in f_message %}
+                                            {% if message == 'You Could Not Be Logged In' %}
+                                                <p class="{{ category }}">{{ message }}</p>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+            
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

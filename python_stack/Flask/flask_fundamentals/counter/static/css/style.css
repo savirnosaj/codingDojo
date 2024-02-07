@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.counter_box {
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    margin-left: -125px;
+    margin-top: -80px;
+}

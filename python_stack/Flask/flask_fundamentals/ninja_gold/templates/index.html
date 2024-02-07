@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Ninja Gold</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div id="score">
+
+                <p class="score_gold">Your Gold:</p>
+
+                <div id="gold">
+                    
+                    <p>{{session['gold']}}</p>
+
+                </div>
+
+            </div>
+
+            <div id="game_board">
+
+                <div id="farm">
+
+                    <p class="head1">Farm</p>
+                    <p>(earns 10-20 golds)</p>
+
+                    <form action="/process_money" method="POST">
+
+                        <input type="hidden" name="building" value="farm">
+                        <input type="submit" value="Find Gold!" class="btn-style1">
+
+                    </form>
+
+                </div>
+                <div id="cave">
+
+                    <p class="head1">Cave</p>
+                    <p>(earns 5-10 golds)</p>
+
+                    <form action="/process_money" method="POST">
+
+                        <input type="hidden" name="building" value="cave">
+                        <input type="submit" value="Find Gold!" class="btn-style1">
+
+                    </form>
+
+                </div>
+                <div id="house">
+
+                    <p class="head1">House</p>
+                    <p>(earns 2-5 golds)</p>
+
+                    <form action="/process_money" method="POST">
+
+                        <input type="hidden" name="building" value="house">
+                        <input type="submit" value="Find Gold!" class="btn-style1">
+
+                    </form>
+
+                </div>
+                <div id="casino">
+
+                    <p class="head1">Casino</p>
+                    <p>(earns/takes 0-50 golds)</p>
+
+                    <form action="/process_money" method="POST">
+
+                        <input type="hidden" name="building" value="casino">
+                        <input type="submit" value="Find Gold!" class="btn-style1">
+
+                    </form>
+
+                </div><br>
+
+                <a href="/reset_game">
+    
+                    <button class="btn-style2 margin_top">Reset Game</button>
+    
+                </a>
+
+            </div>
+
+            <p>Activities:</p>
+            <div id="terminal">
+
+                <div id="activities">
+
+                    {{ message|safe }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

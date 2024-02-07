@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Registration Form</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+
+        <div class="wrapper">
+
+            <div class="container">
+
+                <h1>Registration Form</h1>
+
+                {% with f_message = get_flashed_messages(with_categories=true) %}
+                    {% if f_message %}
+                        {% for category, message in f_message %}
+                            <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form action="/process" method="POST">
+
+                    <label for="email">Email:</label>
+                    <input name="email" type="text" value="{{session['email']}}"><br>
+
+                    <label for="f_name">First Name:</label>
+                    <input name="f_name" type="text" value="{{session['f_name']}}"><br>
+
+                    <label for="l_name">Last Name:</label>
+                    <input name="l_name" type="text" value="{{session['l_name']}}"><br>
+
+                    <span>Birthday:</span><br>
+
+                    <label for="tm_month">Month:</label>
+                    {% if 'tm_month' in session %}
+                        <select name="tm_month">
+                            <option value="{{ session['tm_month'] }}" class="success">{{ session['tm_month'] }}</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    {% else %}
+                        <select name="tm_month">
+                            <option value="" class="error">Select One</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    {% endif %}
+
+                    <label for="tm_day">Day:</label>
+                    {% if 'tm_day' in session %}
+                        <select name="tm_day">
+                            <option value="{{ session['tm_day'] }}" class="success">{{ session['tm_day'] }}</option>
+                            {% for count in range(1, 32) %}
+                                <option value="{{ count }}">{{ count }}</option>
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        <select name="tm_day">
+                            <option value="" class="error">Select One</option>
+                            {% for count in range(1, 32) %}
+                                <option value="{{ count }}">{{ count }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                    
+                    <label for="tm_year">Year:</label>
+                    {% if 'tm_year' in session %}
+                        <select name="tm_year">
+                            <option value="{{ session['tm_year'] }}" class="success">{{ session['tm_year'] }}</option>
+                            {% for count in range(2023, 1923, -1) %}
+                                <option value="{{ count }}">{{ count }}</option>
+                            {% endfor %}
+                        </select><br>
+                    {% else %}
+                        <select name="tm_year">
+                            <option value="" class="error">Select One</option>
+                            {% for count in range(2023, 1923, -1) %}
+                                <option value="{{ count }}">{{ count }}</option>
+                            {% endfor %}
+                        </select><br>
+                    {% endif %}
+
+                    <label for="password">Password:</label>
+                    <input name="password" type="text"><br>
+
+                    <label for="confirm_pass">Confirm Password:</label>
+                    <input name="confirm_pass" type="text"><br>
+
+                    <input type="submit" value="Submit">
+
+                </form>
+
+                <a href="/reset">
+                    <button>Reset</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

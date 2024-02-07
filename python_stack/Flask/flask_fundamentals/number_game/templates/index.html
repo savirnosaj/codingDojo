@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Great Number Game</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+
+            <div id="game">
+
+                <div class="guess_box-text">
+
+                    <h1>Welcome to the Great Number Game!</h1>
+                    <p>I am thinking of a number from 1 - 100</p>
+                    <p>Take a guess!</p>
+
+                </div>
+
+                {% if session['active'] == True %}
+
+                    {% if session['guess'] > session['rand'] %}
+
+                        <div id="guess_box" class="bkg-red">
+
+                            <h2>Too High!</h2>
+
+                        </div><br>
+                    {% elif session['guess'] == session['rand'] %}
+
+                        <div id="guess_box" class="bkg-green">
+
+                            <h2>{{session['guess']}} Was The Number!</h2>
+
+                            <a href="/restart">
+                                <button class="btn-style">Play Again!</button>
+                            </a>
+
+                        </div><br>
+                    {% else %}
+
+                        <div id="guess_box" class="bkg-red">
+
+                            <h2>Too Low!</h2>
+
+                        </div><br>
+                    {% endif %}
+
+                {% else %}
+                        <div class="blank"></div>
+
+                {% endif %}
+
+                {% if session['status'] == False %}
+
+                    <form action="/guess" method="POST">
+                        <input name="guess" class="input-style" type="text"><br>
+                        <button class="btn-style" type="submit">Submit</button>
+                    </form>
+                {% else %}
+
+                    <div class="blank"></div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

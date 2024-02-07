@@ -1,0 +1,38 @@
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #008000;
+}
+
+.delete_form {
+    padding: 0;
+    margin: 0;
+}
+
+.delete_btn {
+    background-color: #ff0000;
+    border: 0px solid #ff0000;
+    padding: 3px 5px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.delete_btn:hover {
+    background-color: #b22222;
+}
+
+.add_btn {
+    background-color: #4169e1;
+    border: 0px solid #4169e1;
+    padding: 5px 5px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add_btn:hover {
+    background-color: #6b8e23;
+}
